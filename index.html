@@ -1,33 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
->
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#173B63">
-
 <title>Masa Madre · Control de Limpieza</title>
 
-
 <style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 
-/* ================================
-   CONFIGURACIÓN GENERAL
-================================ */
-
-*{
-  box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent;
-}
-
-html,
-body{
+html,body{
   margin:0;
   padding:0;
   width:100%;
@@ -37,22 +19,124 @@ body{
 body{
   background:#F8F1E7;
   color:#403229;
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 
-button,
-input{
-  font:inherit;
+button,input{font:inherit}
+
+/* ================= PORTADA ================= */
+
+#cover{
+  min-height:100dvh;
+  width:100%;
+  background:#173B63;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:
+    max(25px,env(safe-area-inset-top))
+    24px
+    max(25px,env(safe-area-inset-bottom))
+    24px;
+  overflow:hidden;
+  position:relative;
 }
 
+#cover:before{
+  content:"";
+  position:absolute;
+  width:360px;
+  height:360px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:50%;
+  top:-175px;
+  right:-110px;
+}
 
-/* ================================
-   PANTALLAS
-================================ */
+#cover:after{
+  content:"";
+  position:absolute;
+  width:330px;
+  height:330px;
+  border:1px solid rgba(199,166,106,.18);
+  border-radius:50%;
+  bottom:-190px;
+  left:-120px;
+}
+
+.cover-content{
+  width:100%;
+  max-width:650px;
+  text-align:center;
+  color:white;
+  position:relative;
+  z-index:2;
+}
+
+.croissant{
+  font-size:76px;
+  line-height:1;
+  margin-bottom:25px;
+}
+
+.cover-title{
+  margin:0;
+  font-family:Georgia,serif;
+  font-size:clamp(42px,11vw,78px);
+  line-height:.98;
+  letter-spacing:clamp(5px,1.5vw,10px);
+  color:white;
+}
+
+.cover-boulangerie{
+  margin-top:18px;
+  font-family:Georgia,serif;
+  font-size:clamp(17px,4vw,25px);
+  font-weight:bold;
+  letter-spacing:clamp(5px,1.8vw,9px);
+  color:#B84B40;
+}
+
+.cover-line{
+  width:105px;
+  height:3px;
+  background:#C7A66A;
+  margin:30px auto;
+}
+
+.cover-control{
+  margin:0;
+  font-family:Georgia,serif;
+  font-size:clamp(23px,6vw,38px);
+  letter-spacing:clamp(1px,1vw,3px);
+  color:white;
+}
+
+.cover-text{
+  max-width:480px;
+  margin:22px auto 0;
+  font-size:clamp(15px,4vw,19px);
+  line-height:1.55;
+  color:#F6EEE3;
+}
+
+.start-button{
+  margin-top:42px;
+  min-width:230px;
+  padding:17px 32px;
+  border-radius:999px;
+  border:2px solid #C7A66A;
+  background:#FFF8ED;
+  color:#173B63;
+  font-family:Georgia,serif;
+  font-size:18px;
+  font-weight:bold;
+  letter-spacing:2px;
+  box-shadow:0 10px 25px rgba(0,0,0,.22);
+  cursor:pointer;
+}
+
+/* ================= PANTALLAS ================= */
 
 .screen{
   display:none;
@@ -60,715 +144,274 @@ input{
   width:100%;
 }
 
-.screen.active{
-  display:block;
-}
-
-
-/* ================================
-   PORTADA
-================================ */
-
-#cover{
-  min-height:100dvh;
-  width:100%;
-  background:#173B63;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  padding:
-    max(24px, env(safe-area-inset-top))
-    24px
-    max(24px, env(safe-area-inset-bottom))
-    24px;
-
-  overflow:hidden;
-  position:relative;
-}
-
-
-/* círculos decorativos */
-
-#cover::before{
-  content:"";
-  position:absolute;
-
-  width:360px;
-  height:360px;
-
-  border:1px solid rgba(255,255,255,.14);
-  border-radius:50%;
-
-  top:-175px;
-  right:-110px;
-}
-
-#cover::after{
-  content:"";
-  position:absolute;
-
-  width:330px;
-  height:330px;
-
-  border:1px solid rgba(199,166,106,.18);
-  border-radius:50%;
-
-  bottom:-190px;
-  left:-120px;
-}
-
-
-/* contenido */
-
-.cover-content{
-  width:100%;
-  max-width:620px;
-
-  text-align:center;
-
-  color:white;
-
-  position:relative;
-  z-index:2;
-}
-
-
-/* croissant */
-
-.croissant{
-  font-size:76px;
-  line-height:1;
-  margin-bottom:28px;
-
-  filter:drop-shadow(
-    0 7px 10px rgba(0,0,0,.18)
-  );
-}
-
-
-/* Masa Madre */
-
-.cover-title{
-  margin:0;
-
-  font-family:Georgia,serif;
-
-  font-size:clamp(42px,11vw,78px);
-
-  line-height:.98;
-
-  letter-spacing:
-    clamp(5px,1.5vw,10px);
-
-  color:#FFFFFF;
-}
-
-
-/* Boulangerie */
-
-.cover-boulangerie{
-  margin-top:18px;
-
-  font-family:Georgia,serif;
-
-  font-size:clamp(17px,4vw,25px);
-
-  font-weight:bold;
-
-  letter-spacing:
-    clamp(5px,1.8vw,9px);
-
-  color:#B84B40;
-}
-
-
-/* línea dorada */
-
-.cover-line{
-  width:105px;
-  height:3px;
-
-  background:#C7A66A;
-
-  margin:30px auto;
-}
-
-
-/* Control */
-
-.cover-control{
-  margin:0;
-
-  font-family:Georgia,serif;
-
-  font-size:clamp(23px,6vw,38px);
-
-  letter-spacing:
-    clamp(1px,1vw,3px);
-
-  color:white;
-}
-
-
-/* frase */
-
-.cover-text{
-  max-width:480px;
-
-  margin:22px auto 0;
-
-  font-size:clamp(15px,4vw,19px);
-
-  line-height:1.55;
-
-  color:#F6EEE3;
-}
-
-
-/* botón */
-
-.start-button{
-  margin-top:42px;
-
-  min-width:230px;
-
-  padding:17px 32px;
-
-  border-radius:999px;
-
-  border:2px solid #C7A66A;
-
-  background:#FFF8ED;
-
-  color:#173B63;
-
-  font-family:Georgia,serif;
-
-  font-size:18px;
-
-  font-weight:bold;
-
-  letter-spacing:2px;
-
-  box-shadow:
-    0 10px 25px rgba(0,0,0,.22);
-
-  cursor:pointer;
-
-  transition:
-    transform .15s ease,
-    box-shadow .15s ease;
-}
-
-.start-button:active{
-  transform:scale(.96);
-
-  box-shadow:
-    0 5px 12px rgba(0,0,0,.18);
-}
-
-
-/* ================================
-   PÁGINAS INTERIORES
-================================ */
+.screen.active{display:block}
 
 .inner-page{
   min-height:100dvh;
-
   padding:
-    max(25px, env(safe-area-inset-top))
+    max(30px,env(safe-area-inset-top))
     18px
-    max(35px, env(safe-area-inset-bottom))
+    max(35px,env(safe-area-inset-bottom))
     18px;
-
   background:
-    radial-gradient(
-      circle at 10% 5%,
-      rgba(199,166,106,.12),
-      transparent 25%
-    ),
-    linear-gradient(
-      180deg,
-      #F8F1E7,
-      #FFF9F2
-    );
+    radial-gradient(circle at 10% 5%,rgba(199,166,106,.12),transparent 25%),
+    linear-gradient(180deg,#F8F1E7,#FFF9F2);
 }
 
-
-/* encabezado */
-
-.brand{
-  text-align:center;
-
-  padding:12px 5px 25px;
-}
-
-.brand-icon{
-  font-size:38px;
-}
-
-.brand-name{
-  margin-top:4px;
-
-  font-family:Georgia,serif;
-
-  color:#173B63;
-
-  font-size:28px;
-}
-
-.brand-sub{
-  margin-top:4px;
-
-  color:#8B786A;
-
-  font-size:13px;
-
-  letter-spacing:3px;
-}
-
-
-/* ================================
-   BIENVENIDOS
-================================ */
+/* ================= BIENVENIDOS ================= */
 
 .welcome{
   text-align:center;
-
-  margin-bottom:28px;
+  max-width:760px;
+  margin:25px auto 30px;
 }
 
 .welcome h1{
   margin:0;
-
   font-family:Georgia,serif;
-
   color:#173B63;
-
-  font-size:
-    clamp(34px,9vw,50px);
+  font-size:clamp(38px,10vw,54px);
 }
 
 .welcome p{
-  margin:8px 0 0;
-
+  margin:10px 0 0;
   color:#786A60;
-
   font-size:17px;
 }
 
-
-/* ================================
-   TARJETAS DE ÁREA
-================================ */
+/* ================= ÁREAS ================= */
 
 .area-list{
   display:flex;
-
   flex-direction:column;
-
   gap:20px;
-
   max-width:760px;
-
   margin:auto;
 }
 
 .area-card{
   width:100%;
-
   border-radius:30px;
-
   padding:30px 28px;
-
   text-align:left;
-
   border:1px solid #DCC9B5;
-
-  box-shadow:
-    0 10px 25px rgba(74,52,38,.10);
-
+  box-shadow:0 10px 25px rgba(74,52,38,.10);
   cursor:pointer;
-
-  transition:
-    transform .15s ease;
 }
-
-.area-card:active{
-  transform:scale(.985);
-}
-
-
-/* barra */
 
 .area-bar{
-  background:
-    linear-gradient(
-      135deg,
-      #E9D1B9,
-      #FFF8EF
-    );
+  background:linear-gradient(135deg,#E9D1B9,#FFF8EF);
 }
-
-.area-bar h2{
-  color:#76533D;
-}
-
-
-/* cocina */
 
 .area-kitchen{
-  background:
-    linear-gradient(
-      135deg,
-      #DCE8F2,
-      #FFFBF4
-    );
+  background:linear-gradient(135deg,#DCE8F2,#FFFBF4);
 }
 
-.area-kitchen h2{
-  color:#173B63;
-}
-
-
-.area-icon{
-  font-size:48px;
-}
+.area-icon{font-size:48px}
 
 .area-card h2{
   margin:12px 0 5px;
-
   font-family:Georgia,serif;
-
-  font-size:
-    clamp(27px,7vw,39px);
+  font-size:clamp(27px,7vw,39px);
 }
+
+.area-bar h2{color:#76533D}
+.area-kitchen h2{color:#173B63}
 
 .area-card p{
   margin:0;
-
   color:#75675D;
-
   font-size:17px;
 }
 
 .enter{
   display:inline-block;
-
   margin-top:22px;
-
   color:#A33F35;
-
   font-size:14px;
-
   letter-spacing:2px;
-
   font-weight:bold;
 }
 
-
-/* ================================
-   PÁGINAS DE CONTROL
-================================ */
+/* ================= CONTROL ================= */
 
 .control-page{
   max-width:800px;
-
   margin:auto;
 }
 
 .back-button{
   border:1px solid #D8C5B1;
-
-  background:#FFFFFF;
-
+  background:white;
   color:#173B63;
-
   border-radius:13px;
-
   padding:10px 15px;
-
   cursor:pointer;
-
   margin-bottom:18px;
 }
 
 .control-title{
   font-family:Georgia,serif;
-
   color:#173B63;
-
-  font-size:
-    clamp(29px,7vw,42px);
-
+  font-size:clamp(29px,7vw,42px);
   margin:0;
 }
 
 .control-description{
   color:#786A60;
-
   line-height:1.5;
-
   margin-top:7px;
-
   margin-bottom:24px;
 }
 
-
-/* ================================
-   BLOQUES
-================================ */
-
 .block{
   background:#FFFDF9;
-
   border:1px solid #E0CFBD;
-
   border-radius:23px;
-
   padding:18px;
-
   margin-bottom:18px;
-
-  box-shadow:
-    0 6px 18px rgba(75,52,37,.06);
+  box-shadow:0 6px 18px rgba(75,52,37,.06);
 }
 
 .block-title{
   margin:0 0 4px;
-
   font-family:Georgia,serif;
-
   color:#A33F35;
-
   font-size:22px;
 }
 
 .block-description{
   margin:0 0 15px;
-
   color:#85756A;
-
   font-size:13px;
 }
 
-
-/* ================================
-   TAREAS
-================================ */
+/* ================= TAREAS ================= */
 
 .task{
-  background:#FFFFFF;
-
+  background:white;
   border:1px solid #E7D9CB;
-
   border-radius:17px;
-
   padding:14px;
-
   margin-top:10px;
 }
 
 .task-main{
   display:flex;
-
   align-items:center;
-
   gap:12px;
 }
 
 .check{
   width:30px;
   height:30px;
-
   min-width:30px;
-
   border-radius:50%;
-
   border:2px solid #B49376;
-
-  background:#FFFFFF;
-
+  background:white;
   color:white;
-
   display:grid;
-
   place-items:center;
-
   padding:0;
-
   cursor:pointer;
-
   font-weight:bold;
 }
 
 .check.checked{
   background:#173B63;
-
   border-color:#173B63;
 }
 
 .task.completed .task-name{
   text-decoration:line-through;
-
   opacity:.5;
 }
 
 .task-name{
   font-weight:650;
-
   line-height:1.35;
-
   flex:1;
 }
 
-
-/* personas */
-
 .people-label{
   margin-top:12px;
-
   color:#8A7769;
-
   font-size:12px;
-
-  letter-spacing:.5px;
 }
 
 .people{
   display:flex;
-
   flex-wrap:wrap;
-
   gap:7px;
-
   margin-top:7px;
 }
 
 .person{
   border:1px solid #D9C5B2;
-
   background:#FFF8F0;
-
   color:#604A3A;
-
   border-radius:999px;
-
   padding:7px 10px;
-
   font-size:12px;
-
   cursor:pointer;
 }
 
 .person.selected{
   background:#A33F35;
-
   border-color:#A33F35;
-
-  color:#FFFFFF;
+  color:white;
 }
-
-
-/* observaciones */
 
 .note{
   width:100%;
-
   margin-top:10px;
-
   border:1px solid #E5D7C8;
-
   background:#FFFDFB;
-
   border-radius:11px;
-
   padding:10px;
-
-  outline:none;
 }
 
-.note:focus{
-  border-color:#B49376;
-}
-
-
-/* ================================
-   INDICACIONES
-================================ */
+/* ================= INDICACIONES ================= */
 
 .guideline{
   border-left:4px solid #A33F35;
-
-  background:#FFFFFF;
-
+  background:white;
   border-radius:14px;
-
   padding:13px 14px;
-
   margin-top:9px;
 }
 
 .guideline strong{
   display:block;
-
   color:#173B63;
-
   font-family:Georgia,serif;
-
   font-size:16px;
-
   margin-bottom:4px;
 }
 
 .guideline span{
   display:block;
-
   color:#6F6258;
-
   font-size:13px;
-
   line-height:1.5;
 }
 
-
-/* ================================
-   PIE
-================================ */
-
-.footer{
-  text-align:center;
-
-  margin-top:30px;
-
-  color:#99887B;
-
-  font-size:12px;
-
-  letter-spacing:2px;
-}
-
 </style>
-
 </head>
 
 
 <body>
 
 
-<!-- ==================================================
-     PORTADA
-================================================== -->
+<!-- =================================================
+     PRIMERA PÁGINA
+================================================= -->
 
 <section id="cover">
 
   <div class="cover-content">
 
-    <div class="croissant">
-      🥐
-    </div>
+    <div class="croissant">🥐</div>
 
     <h1 class="cover-title">
       MASA MADRE
@@ -802,33 +445,14 @@ input{
 
 
 
-<!-- ==================================================
-     INICIO
-================================================== -->
+<!-- =================================================
+     SEGUNDA PÁGINA
+     SIN LOGO, SIN BOULANGERIE Y SIN ENCABEZADO REPETIDO
+================================================= -->
 
-<section
-  id="home"
-  class="screen"
->
+<section id="home" class="screen">
 
   <div class="inner-page">
-
-    <div class="brand">
-
-      <div class="brand-icon">
-        🥐
-      </div>
-
-      <div class="brand-name">
-        MASA MADRE
-      </div>
-
-      <div class="brand-sub">
-        BOULANGERIE · CONTROL DE LIMPIEZA
-      </div>
-
-    </div>
-
 
     <div class="welcome">
 
@@ -845,8 +469,6 @@ input{
 
     <div class="area-list">
 
-
-      <!-- BARRA -->
 
       <button
         class="area-card area-bar"
@@ -872,9 +494,6 @@ input{
       </button>
 
 
-
-      <!-- COCINA -->
-
       <button
         class="area-card area-kitchen"
         onclick="goTo('kitchen')"
@@ -898,12 +517,6 @@ input{
 
       </button>
 
-
-    </div>
-
-
-    <div class="footer">
-      MASA MADRE · BOULANGERIE
     </div>
 
   </div>
@@ -912,14 +525,11 @@ input{
 
 
 
-<!-- ==================================================
+<!-- =================================================
      BARRA
-================================================== -->
+================================================= -->
 
-<section
-  id="bar"
-  class="screen"
->
+<section id="bar" class="screen">
 
   <div class="inner-page">
 
@@ -932,14 +542,12 @@ input{
         ← Regresar
       </button>
 
-
       <h1 class="control-title">
         ☕ Barra y Cafetería
       </h1>
 
       <p class="control-description">
         Preparación, orden y limpieza de barra y cafetería.
-        Selecciona quién realizó cada actividad.
       </p>
 
 
@@ -950,7 +558,7 @@ input{
         </h2>
 
         <p class="block-description">
-          Las actividades pueden ser realizadas por una o varias personas.
+          Selecciona quién participó en cada actividad.
         </p>
 
         <div id="barTasks"></div>
@@ -964,14 +572,9 @@ input{
           📅 Actividades programadas
         </h2>
 
-        <p class="block-description">
-          Actividades correspondientes a días específicos.
-        </p>
-
         <div id="barScheduled"></div>
 
       </div>
-
 
     </div>
 
@@ -981,14 +584,11 @@ input{
 
 
 
-<!-- ==================================================
+<!-- =================================================
      COCINA
-================================================== -->
+================================================= -->
 
-<section
-  id="kitchen"
-  class="screen"
->
+<section id="kitchen" class="screen">
 
   <div class="inner-page">
 
@@ -1001,19 +601,14 @@ input{
         ← Regresar
       </button>
 
-
       <h1 class="control-title">
         👩🏻‍🍳 Cocina
       </h1>
 
       <p class="control-description">
         Limpieza, organización y cuidado del área.
-        Una misma actividad puede ser registrada por varias personas.
       </p>
 
-
-
-      <!-- LIMPIEZA DIARIA -->
 
       <div class="block">
 
@@ -1022,8 +617,7 @@ input{
         </h2>
 
         <p class="block-description">
-          Actividades que deben mantenerse durante el turno
-          y quedar listas al finalizar.
+          Actividades que deben mantenerse durante el turno.
         </p>
 
         <div id="kitchenDaily"></div>
@@ -1031,26 +625,16 @@ input{
       </div>
 
 
-
-      <!-- LIMPIEZA PROFUNDA -->
-
       <div class="block">
 
         <h2 class="block-title">
           🧽 Limpieza profunda / semanal
         </h2>
 
-        <p class="block-description">
-          Actividades que requieren mayor atención.
-        </p>
-
         <div id="kitchenDeep"></div>
 
       </div>
 
-
-
-      <!-- ACTIVIDADES PROGRAMADAS -->
 
       <div class="block">
 
@@ -1058,17 +642,10 @@ input{
           📅 Actividades programadas
         </h2>
 
-        <p class="block-description">
-          Actividades asignadas para días específicos.
-        </p>
-
         <div id="kitchenScheduled"></div>
 
       </div>
 
-
-
-      <!-- COSAS QUE DEBEMOS CUIDAR -->
 
       <div class="block">
 
@@ -1076,151 +653,96 @@ input{
           🧼 Cosas que debemos cuidar todos
         </h2>
 
-        <p class="block-description">
-          Son responsabilidades de todos, no solamente de quien tenga una tarea asignada.
-        </p>
-
 
         <div class="guideline">
-
-          <strong>
-            🔥 Hornos
-          </strong>
-
+          <strong>🔥 Hornos</strong>
           <span>
             Tenemos dos hornos y ambos deben mantenerse limpios.
             No dejar grasa, comida o escurrimientos pegados.
             Si algo se chorrea, se limpia en el momento.
           </span>
-
         </div>
 
 
         <div class="guideline">
-
-          <strong>
-            🔥 Plancha
-          </strong>
-
+          <strong>🔥 Plancha</strong>
           <span>
             Debe quedar limpia y sin grasa acumulada.
             Antes de utilizar desengrasante, retirar o proteger
             los trastes que estén debajo para evitar que se contaminen.
             Los trastes limpios no deben terminar llenos de desengrasante.
           </span>
-
         </div>
 
 
         <div class="guideline">
-
-          <strong>
-            🔥 Estufa
-          </strong>
-
+          <strong>🔥 Estufa</strong>
           <span>
             Debe mantenerse limpia y sin grasa ni restos de comida.
           </span>
-
         </div>
 
 
         <div class="guideline">
-
-          <strong>
-            🍲 Baños María
-          </strong>
-
+          <strong>🍲 Baños María</strong>
           <span>
             Deben mantenerse limpios, sin salsa ni crema alrededor
             y revisar/cambiar el agua cuando sea necesario.
             No podemos dejar el agua sucia durante días.
           </span>
-
         </div>
 
 
         <div class="guideline">
-
-          <strong>
-            📱 Microondas
-          </strong>
-
+          <strong>📱 Microondas</strong>
           <span>
             Si algo se chorrea, se limpia en ese momento.
             No dejar que se seque y se pegue.
-            Si se ensucia, se limpia.
           </span>
-
         </div>
 
 
         <div class="guideline">
-
-          <strong>
-            🍽️ Loza
-          </strong>
-
+          <strong>🍽️ Loza</strong>
           <span>
             No dejar la tarja llena de trastes.
-            Los restos de comida se tiran a la basura y NO al resumidero,
-            porque termina tapándose.
-            Todo traste lavado debe quedar acomodado en el lugar que ya tiene asignado.
+            Los restos de comida se tiran a la basura y NO al resumidero.
+            Todo traste lavado debe quedar acomodado en su lugar.
             Si una persona comienza la loza y otra la termina,
-            ambas pueden registrarse en la actividad.
+            ambas pueden registrarse.
           </span>
-
         </div>
 
 
         <div class="guideline">
-
-          <strong>
-            🗄️ Refrigeradores
-          </strong>
-
+          <strong>🗄️ Refrigeradores</strong>
           <span>
-            Mantenerlos ordenados por las secciones que ya están establecidas:
+            Mantenerlos ordenados por las secciones establecidas:
             verduras, salsas, cremas, etc.
             Si algo ya no sirve, se tira.
             Si sacamos algo, lo regresamos a su lugar.
-            No meter las cosas donde haya espacio nada más por salir rápido.
           </span>
-
         </div>
 
 
         <div class="guideline">
-
-          <strong>
-            🧹 Piso
-          </strong>
-
+          <strong>🧹 Piso</strong>
           <span>
-            Se debe mantener limpio durante el turno
-            y al finalizar debe quedar barrido por debajo de las cosas,
-            no solo el centro.
+            Se debe mantener limpio durante el turno y al finalizar
+            debe quedar barrido por debajo de las cosas, no solo el centro.
           </span>
-
         </div>
 
 
         <div class="guideline">
-
-          <strong>
-            🧽 Mesa del centro
-          </strong>
-
+          <strong>🧽 Mesa del centro</strong>
           <span>
             Debe mantenerse limpia y la parte de abajo también
             debe permanecer acomodada.
           </span>
-
         </div>
 
-
       </div>
-
 
     </div>
 
@@ -1232,28 +754,24 @@ input{
 
 <script>
 
-/* ==================================================
+/* ============================
    NAVEGACIÓN
-================================================== */
+============================ */
 
 function goTo(page){
 
-  /* ocultar portada */
-  const cover =
-    document.getElementById("cover");
+  const cover=document.getElementById("cover");
 
-  if(page === "cover"){
+  if(page==="cover"){
 
-    cover.style.display = "flex";
+    cover.style.display="flex";
 
   }else{
 
-    cover.style.display = "none";
+    cover.style.display="none";
 
   }
 
-
-  /* ocultar todas las páginas */
 
   document
     .querySelectorAll(".screen")
@@ -1264,206 +782,139 @@ function goTo(page){
     });
 
 
-  /* mostrar página elegida */
+  if(page!=="cover"){
 
-  if(page !== "cover"){
-
-    const target =
-      document.getElementById(page);
+    const target=document.getElementById(page);
 
     if(target){
-
       target.classList.add("active");
-
     }
 
   }
 
 
-  window.scrollTo({
-    top:0,
-    behavior:"instant"
-  });
+  window.scrollTo(0,0);
 
 }
 
 
-/* ==================================================
+
+/* ============================
    PERSONAS
-================================================== */
+============================ */
 
-
-/* COCINA */
-
-const kitchenPeople = [
-
+const kitchenPeople=[
   "Jessica",
   "David",
   "Itzel · Cocina",
   "César",
   "Ángel"
-
 ];
 
-
-/* BARRA */
-
-const barPeople = [
-
+const barPeople=[
   "Jessica",
   "Paola",
   "Itzel · Barra",
   "Ángela",
   "Karla"
-
 ];
 
 
-/* ==================================================
-   ACTIVIDADES DE COCINA
-================================================== */
 
-const kitchenDaily = [
+/* ============================
+   ACTIVIDADES COCINA
+============================ */
 
+const kitchenDaily=[
   "Loza limpia, seca y acomodada",
-
   "Piso barrido y trapeado",
-
   "Plancha limpia",
-
   "Estufa limpia",
-
   "Baños María limpios",
-
   "2 Microondas limpios",
-
   "Loza y utensilios acomodados",
-
   "Área de trabajo limpia y despejada",
-
   "Limpieza de derrames inmediata",
-
   "Mesa del centro limpia y acomodada"
-
 ];
 
-
-const kitchenDeep = [
-
+const kitchenDeep=[
   "Hornos – Limpieza profunda",
-
   "Charolas – Lavado y secado",
-
   "Paredes – Limpieza general",
-
   "Baños María – Vaciar y lavar",
-
   "Campana – Limpieza de grasa"
-
 ];
 
-
-const kitchenScheduled = [
-
+const kitchenScheduled=[
   "Acomodar Bodega – Viernes",
-
   "Acomodar Bodega – Sábado"
-
 ];
 
 
-/* ==================================================
-   ACTIVIDADES DE BARRA
-================================================== */
 
-const barDaily = [
+/* ============================
+   ACTIVIDADES BARRA
+============================ */
 
+const barDaily=[
   "Preparar Cold Brew",
-
   "Rellenar recibidor",
-
   "Tirar basura",
-
   "Acomodar pan",
-
   "Rellenar vasos (según sea necesario)",
-
   "Limpiar cafeteras por fuera",
-
   "Limpieza de mesas y sillas",
-
   "Limpieza de baños"
-
 ];
 
-
-const barScheduled = [
-
+const barScheduled=[
   "Acomodar Bodega – Viernes",
-
   "Acomodar Bodega – Sábado",
-
   "Limpieza profunda de 2 cafeteras – Sábado",
-
   "Limpieza de Molino – Sábado",
-
   "Realizar Descalcificado – Sábado"
-
 ];
 
 
-/* ==================================================
-   CREAR ACTIVIDADES
-================================================== */
 
-function renderTasks(
-  items,
-  people,
-  containerId,
-  storagePrefix
-){
+/* ============================
+   CREAR TAREAS
+============================ */
 
-  const container =
-    document.getElementById(containerId);
+function renderTasks(items,people,containerId,prefix){
 
-  container.innerHTML = "";
+  const container=document.getElementById(containerId);
+
+  container.innerHTML="";
 
 
   items.forEach(function(item,index){
 
-    const key =
-      storagePrefix + "-" + index;
+    const key=prefix+"-"+index;
 
+    const completed=
+      localStorage.getItem(key)==="completed";
 
-    const completed =
-      localStorage.getItem(key)
-      === "completed";
-
-
-    let selectedPeople =
+    const selected=
       JSON.parse(
-        localStorage.getItem(
-          key + "-people"
-        ) || "[]"
+        localStorage.getItem(key+"-people")||"[]"
       );
 
 
-    const task =
-      document.createElement("div");
+    const task=document.createElement("div");
 
-    task.className =
-      "task" +
-      (completed ? " completed" : "");
+    task.className=
+      "task"+
+      (completed?" completed":"");
 
 
-    task.innerHTML = `
+    task.innerHTML=`
 
       <div class="task-main">
 
-        <button
-          class="check ${completed ? "checked" : ""}"
-        >
-          ${completed ? "✓" : ""}
+        <button class="check ${completed?"checked":""}">
+          ${completed?"✓":""}
         </button>
 
         <div class="task-name">
@@ -1472,27 +923,18 @@ function renderTasks(
 
       </div>
 
-
       <div class="people-label">
         ¿Quién participó?
       </div>
-
 
       <div class="people">
 
         ${people.map(function(person){
 
-          const isSelected =
-            selectedPeople.includes(person);
-
-          return `
+          return`
 
             <button
-              class="person ${
-                isSelected
-                ? "selected"
-                : ""
-              }"
+              class="person ${selected.includes(person)?"selected":""}"
               data-person="${person}"
             >
               ${person}
@@ -1504,98 +946,68 @@ function renderTasks(
 
       </div>
 
-
       <input
         class="note"
-        type="text"
         placeholder="Observaciones (opcional)"
       >
 
     `;
 
 
-    /* marcar actividad */
-
     task
       .querySelector(".check")
-      .addEventListener(
-        "click",
-        function(){
+      .onclick=function(){
 
-          if(
-            localStorage.getItem(key)
-            === "completed"
-          ){
+        if(localStorage.getItem(key)==="completed"){
 
-            localStorage.removeItem(key);
+          localStorage.removeItem(key);
 
-          }else{
+        }else{
 
-            localStorage.setItem(
-              key,
-              "completed"
-            );
-
-          }
-
-          renderAll();
+          localStorage.setItem(key,"completed");
 
         }
-      );
 
+        renderAll();
 
-    /* seleccionar personas */
+      };
+
 
     task
       .querySelectorAll(".person")
       .forEach(function(button){
 
-        button.addEventListener(
-          "click",
-          function(){
+        button.onclick=function(){
 
-            let current =
-              JSON.parse(
-                localStorage.getItem(
-                  key + "-people"
-                ) || "[]"
-              );
-
-
-            const person =
-              button.dataset.person;
-
-
-            if(
-              current.includes(person)
-            ){
-
-              current =
-                current.filter(
-                  function(name){
-
-                    return name !== person;
-
-                  }
-                );
-
-            }else{
-
-              current.push(person);
-
-            }
-
-
-            localStorage.setItem(
-              key + "-people",
-              JSON.stringify(current)
+          let current=
+            JSON.parse(
+              localStorage.getItem(key+"-people")||"[]"
             );
 
+          const person=button.dataset.person;
 
-            renderAll();
+
+          if(current.includes(person)){
+
+            current=current.filter(
+              name=>name!==person
+            );
+
+          }else{
+
+            current.push(person);
 
           }
-        );
+
+
+          localStorage.setItem(
+            key+"-people",
+            JSON.stringify(current)
+          );
+
+          renderAll();
+
+        };
 
       });
 
@@ -1607,9 +1019,10 @@ function renderTasks(
 }
 
 
-/* ==================================================
-   RENDERIZAR TODO
-================================================== */
+
+/* ============================
+   RENDERIZAR
+============================ */
 
 function renderAll(){
 
@@ -1620,14 +1033,12 @@ function renderAll(){
     "kitchen-daily"
   );
 
-
   renderTasks(
     kitchenDeep,
     kitchenPeople,
     "kitchenDeep",
     "kitchen-deep"
   );
-
 
   renderTasks(
     kitchenScheduled,
@@ -1636,14 +1047,12 @@ function renderAll(){
     "kitchen-scheduled"
   );
 
-
   renderTasks(
     barDaily,
     barPeople,
     "barTasks",
     "bar-daily"
   );
-
 
   renderTasks(
     barScheduled,
@@ -1655,23 +1064,14 @@ function renderAll(){
 }
 
 
-/* ==================================================
-   INICIAR
-================================================== */
-
 renderAll();
 
 
-/*
-  MUY IMPORTANTE:
-  La portada comienza visible.
-  Las demás páginas comienzan ocultas.
-*/
+/* COMENZAR SIEMPRE EN PORTADA */
 
 goTo("cover");
 
 </script>
-
 
 </body>
 </html>
