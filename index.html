@@ -376,16 +376,93 @@ line-height:1.5;
 color:#6F6258
 }
 
+.staff-add{
+display:flex;
+gap:8px
+}
+.staff-input{
+flex:1;
+padding:11px;
+border:1px solid #DDCDB9;
+border-radius:12px
+}
+.staff-add-button{
+padding:11px 14px;
+border:0;
+border-radius:12px;
+background:#173B63;
+color:white;
+font-weight:bold
+}
+.staff-list{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin-top:12px
+}
+.staff-chip{
+display:flex;
+align-items:center;
+gap:7px;
+padding:8px 10px;
+border-radius:999px;
+background:#F8F1E7;
+border:1px solid #DDCDB9;
+font-size:12px
+}
+.staff-remove{
+border:0;
+background:none;
+color:#A33F35;
+font-weight:bold;
+font-size:16px
+}
+.staff-empty{
+font-size:12px;
+color:#9A8A7D;
+padding:5px 0
+}
+
+.identity-people{
+display:flex;
+flex-wrap:wrap;
+gap:8px
+}
+.identity-person{
+padding:10px 14px;
+border:1px solid #D9C5B2;
+border-radius:999px;
+background:#FFF8F0;
+color:#604A3A;
+font-weight:600;
+font-size:13px
+}
+.identity-person.active{
+background:#173B63;
+border-color:#173B63;
+color:white
+}
+
+.quick-register{
+width:100%;
+margin-top:9px;
+padding:11px;
+border:0;
+border-radius:12px;
+background:#A33F35;
+color:white;
+font-weight:bold
+}
+
 @media(max-width:480px){
 .grid{grid-template-columns:1fr}
 .close{flex-direction:column}
+.staff-add{align-items:stretch}
 }
 </style>
 </head>
 
 <body>
-
-<!-- PORTADA -->
 
 <section id="cover">
 
@@ -420,8 +497,6 @@ COMENZAR →
 </section>
 
 
-<!-- INICIO -->
-
 <section id="home" class="screen">
 
 <div class="inner">
@@ -444,9 +519,7 @@ Selecciona tu área para comenzar
 
 <h2>BARRA Y CAFETERÍA</h2>
 
-<p>
-Preparación · Orden · Limpieza
-</p>
+<p>Preparación · Orden · Limpieza</p>
 
 <span class="enter">
 ENTRAR AL CONTROL →
@@ -461,9 +534,7 @@ ENTRAR AL CONTROL →
 
 <h2>COCINA</h2>
 
-<p>
-Limpieza · Organización · Cuidado
-</p>
+<p>Limpieza · Organización · Cuidado</p>
 
 <span class="enter">
 ENTRAR AL CONTROL →
@@ -477,8 +548,6 @@ ENTRAR AL CONTROL →
 
 </section>
 
-
-<!-- BARRA -->
 
 <section id="bar" class="screen">
 
@@ -553,6 +622,56 @@ onclick="setTurn('bar','Tarde')"
 
 <div class="box">
 
+<h2>👥 Personal</h2>
+
+<p class="small">
+Agrega personas nuevas o elimina a quienes ya no trabajen aquí.
+</p>
+
+<div class="staff-add">
+
+<input
+id="barStaffInput"
+class="staff-input"
+placeholder="Nombre de la persona..."
+maxlength="40"
+>
+
+<button
+class="staff-add-button"
+onclick="addPerson('bar')"
+>
+＋ Agregar
+</button>
+
+</div>
+
+<div
+id="barStaffList"
+class="staff-list"
+></div>
+
+</div>
+
+
+<div class="box">
+
+<h2>👤 ¿Quién eres?</h2>
+
+<p class="small">
+Selecciona tu nombre una sola vez.
+</p>
+
+<div
+id="barIdentity"
+class="identity-people"
+></div>
+
+</div>
+
+
+<div class="box">
+
 <h2>📊 Resumen del turno</h2>
 
 <div id="barSummary"></div>
@@ -565,8 +684,8 @@ onclick="setTurn('bar','Tarde')"
 <h2>☕ Actividades diarias</h2>
 
 <p class="small">
-Toca el nombre de quien realiza la actividad.
-La hora se registra automáticamente.
+Registra quién realizó cada actividad.
+La hora se guarda automáticamente.
 </p>
 
 <div id="barTasks"></div>
@@ -618,14 +737,12 @@ onclick="setClose('bar','pendientes')"
 
 </div>
 
-
 <textarea
 id="barCloseNote"
 class="close-note"
 placeholder="Observaciones del turno..."
 oninput="saveCloseNote('bar')"
 ></textarea>
-
 
 <button
 class="save"
@@ -634,7 +751,6 @@ onclick="saveClose('bar')"
 GUARDAR CIERRE DEL TURNO
 </button>
 
-
 <button
 class="save whatsapp-button"
 onclick="sendWhatsApp('bar')"
@@ -642,14 +758,12 @@ onclick="sendWhatsApp('bar')"
 📲 GENERAR REPORTE PARA WHATSAPP
 </button>
 
-
 <div
 id="barSaved"
 class="saved"
 >
 ✓ Cierre guardado correctamente.
 </div>
-
 
 <div class="whatsapp-hint">
 💬 El reporte se prepara para WhatsApp.
@@ -664,8 +778,6 @@ Puedes pegarlo en el chat o grupo que quieras.
 
 </section>
 
-
-<!-- COCINA -->
 
 <section id="kitchen" class="screen">
 
@@ -740,6 +852,56 @@ onclick="setTurn('kitchen','Tarde')"
 
 <div class="box">
 
+<h2>👥 Personal</h2>
+
+<p class="small">
+Agrega personas nuevas o elimina a quienes ya no trabajen aquí.
+</p>
+
+<div class="staff-add">
+
+<input
+id="kitchenStaffInput"
+class="staff-input"
+placeholder="Nombre de la persona..."
+maxlength="40"
+>
+
+<button
+class="staff-add-button"
+onclick="addPerson('kitchen')"
+>
+＋ Agregar
+</button>
+
+</div>
+
+<div
+id="kitchenStaffList"
+class="staff-list"
+></div>
+
+</div>
+
+
+<div class="box">
+
+<h2>👤 ¿Quién eres?</h2>
+
+<p class="small">
+Selecciona tu nombre una sola vez.
+</p>
+
+<div
+id="kitchenIdentity"
+class="identity-people"
+></div>
+
+</div>
+
+
+<div class="box">
+
 <h2>📊 Resumen del turno</h2>
 
 <div id="kitchenSummary"></div>
@@ -752,8 +914,8 @@ onclick="setTurn('kitchen','Tarde')"
 <h2>🍽️ Limpieza diaria</h2>
 
 <p class="small">
-Toca el nombre de quien realiza la actividad.
-La hora se registra automáticamente.
+Registra quién realizó cada actividad.
+La hora se guarda automáticamente.
 </p>
 
 <div id="kitchenDaily"></div>
@@ -861,7 +1023,6 @@ Puedes pegarlo en el chat o grupo que quieras.
 🧼 Cosas que debemos cuidar todos
 </h2>
 
-
 <div class="guide">
 
 <strong>🔥 Hornos</strong>
@@ -873,7 +1034,6 @@ Si algo se chorrea, se limpia en el momento.
 </span>
 
 </div>
-
 
 <div class="guide">
 
@@ -888,7 +1048,6 @@ Los trastes limpios no deben terminar llenos de desengrasante.
 
 </div>
 
-
 <div class="guide">
 
 <strong>🔥 Estufa</strong>
@@ -899,7 +1058,6 @@ Debe mantenerse limpia y sin grasa ni restos de comida.
 
 </div>
 
-
 <div class="guide">
 
 <strong>🍲 Baños María</strong>
@@ -907,11 +1065,9 @@ Debe mantenerse limpia y sin grasa ni restos de comida.
 <span>
 Deben mantenerse limpios, sin salsa ni crema alrededor
 y revisar/cambiar el agua cuando sea necesario.
-No podemos dejar el agua sucia durante días.
 </span>
 
 </div>
-
 
 <div class="guide">
 
@@ -923,7 +1079,6 @@ No dejar que se seque y se pegue.
 </span>
 
 </div>
-
 
 <div class="guide">
 
@@ -939,7 +1094,6 @@ ambas pueden registrarse.
 
 </div>
 
-
 <div class="guide">
 
 <strong>🗄️ Refrigeradores</strong>
@@ -947,12 +1101,9 @@ ambas pueden registrarse.
 <span>
 Mantenerlos ordenados por las secciones establecidas:
 verduras, salsas, cremas, etc.
-Si algo ya no sirve, se tira.
-Si sacamos algo, lo regresamos a su lugar.
 </span>
 
 </div>
-
 
 <div class="guide">
 
@@ -960,12 +1111,10 @@ Si sacamos algo, lo regresamos a su lugar.
 
 <span>
 Se debe mantener limpio durante el turno
-y al finalizar debe quedar barrido por debajo de las cosas,
-no solo el centro.
+y al finalizar debe quedar barrido por debajo de las cosas.
 </span>
 
 </div>
-
 
 <div class="guide">
 
@@ -985,13 +1134,9 @@ debe permanecer acomodada.
 </div>
 
 </section>
+  <script>
 
-
-<script>
-
-/* PERSONAS */
-
-const PEOPLE={
+const DEFAULT_PEOPLE={
 
 kitchen:[
 "Jessica",
@@ -1012,64 +1157,82 @@ bar:[
 };
 
 
-/* ACTIVIDADES */
+/* PERSONAL GUARDADO */
 
-const TASKS={
+function getPeople(area){
 
-kitchen:{
+const key=
+"mm-"+area+"-people";
 
-daily:[
-"Loza limpia, seca y acomodada",
-"Piso barrido y trapeado",
-"Plancha limpia",
-"Estufa limpia",
-"Baños María limpios",
-"2 Microondas limpios",
-"Loza y utensilios acomodados",
-"Área de trabajo limpia y despejada",
-"Limpieza de derrames inmediata",
-"Mesa del centro limpia y acomodada"
-],
+const saved=
+localStorage.getItem(key);
 
-deep:[
-"Hornos – Limpieza profunda",
-"Charolas – Lavado y secado",
-"Paredes – Limpieza general",
-"Baños María – Vaciar y lavar",
-"Campana – Limpieza de grasa"
-],
+if(saved){
 
-scheduled:[
-"Acomodar Bodega – Viernes",
-"Acomodar Bodega – Sábado"
-]
+try{
 
-},
+const parsed=
+JSON.parse(saved);
 
-bar:{
+if(Array.isArray(parsed)){
 
-daily:[
-"Preparar Cold Brew",
-"Rellenar recibidor",
-"Tirar basura",
-"Acomodar pan",
-"Rellenar vasos (según sea necesario)",
-"Limpiar cafeteras por fuera",
-"Limpieza de mesas y sillas",
-"Limpieza de baños"
-],
+return parsed.filter(
+function(name){
 
-scheduled:[
-"Acomodar Bodega – Viernes",
-"Acomodar Bodega – Sábado",
-"Limpieza profunda de 2 cafeteras – Sábado",
-"Limpieza de Molino – Sábado",
-"Realizar Descalcificado – Sábado"
-]
+if(typeof name!=="string")
+return false;
+
+const clean=name.trim();
+
+if(!clean)
+return false;
+
+if(clean.toLowerCase()==="undefined")
+return false;
+
+if(clean.toLowerCase()==="null")
+return false;
+
+return true;
+
+}
+);
 
 }
 
-};
+}catch(error){}
+
+}
+
+return[
+...DEFAULT_PEOPLE[area]
+];
+
+}
+
+
+function savePeople(area,people){
+
+const clean=[
+...new Set(
+
+people
+.map(function(name){
+
+return String(name).trim();
+
+})
+.filter(Boolean)
+
+)
+];
+
+localStorage.setItem(
+"mm-"+area+"-people",
+JSON.stringify(clean)
+);
+
+}
 
 
 /* FECHA */
@@ -1112,7 +1275,9 @@ index;
 function peopleKey(area,type,index){
 
 return taskKey(
-area,type,index
+area,
+type,
+index
 )+"-people";
 
 }
@@ -1127,7 +1292,6 @@ page==="cover"
 ?"flex"
 :"none";
 
-
 document
 .querySelectorAll(".screen")
 .forEach(function(screen){
@@ -1135,7 +1299,6 @@ document
 screen.classList.remove("active");
 
 });
-
 
 if(page!=="cover"){
 
@@ -1150,7 +1313,6 @@ target.classList.add("active");
 
 }
 
-
 if(
 page==="bar"||
 page==="kitchen"
@@ -1159,7 +1321,6 @@ page==="kitchen"
 loadArea(page);
 
 }
-
 
 window.scrollTo(0,0);
 
@@ -1175,10 +1336,8 @@ area==="bar"
 ?"barDate"
 :"kitchenDate";
 
-
 const value=
 document.getElementById(id).value;
-
 
 if(value){
 
@@ -1188,7 +1347,6 @@ value
 );
 
 }
-
 
 loadArea(area);
 
@@ -1220,19 +1378,79 @@ return localStorage.getItem(
 
 /* REGISTROS */
 
-function getRecords(
-area,
-type,
-index
-){
+function getRecords(area,type,index){
 
-return JSON.parse(
+try{
+
+const raw=
+JSON.parse(
 
 localStorage.getItem(
 peopleKey(area,type,index)
 )||"[]"
 
 );
+
+if(!Array.isArray(raw))
+return [];
+
+
+return raw
+
+.filter(function(record){
+
+if(!record)
+return false;
+
+const name=
+typeof record.name==="string"
+?record.name.trim()
+:"";
+
+const time=
+typeof record.time==="string"
+?record.time.trim()
+:"";
+
+if(!name || !time)
+return false;
+
+if(name.toLowerCase()==="undefined")
+return false;
+
+if(time.toLowerCase()==="undefined")
+return false;
+
+if(name.toLowerCase()==="null")
+return false;
+
+if(time.toLowerCase()==="null")
+return false;
+
+return true;
+
+})
+
+.map(function(record){
+
+return{
+
+name:record.name.trim(),
+
+time:record.time.trim(),
+
+timestamp:
+Number(record.timestamp)||0
+
+};
+
+});
+
+}catch(error){
+
+return [];
+
+}
 
 }
 
@@ -1275,6 +1493,400 @@ hour12:true
 }
 
 
+/* PERSONA ACTIVA */
+
+function identityKey(area){
+
+return "mm-"+
+area+"-"+
+getDate(area)+
+"-identity";
+
+}
+
+
+function getIdentity(area){
+
+return localStorage.getItem(
+identityKey(area)
+)||"";
+
+}
+
+
+function setIdentity(area,name){
+
+const clean=
+String(name||"").trim();
+
+if(!clean)
+return;
+
+localStorage.setItem(
+identityKey(area),
+clean
+);
+
+renderIdentity(area);
+
+loadArea(area);
+
+}
+
+
+function renderIdentity(area){
+
+const container=
+document.getElementById(
+area+"Identity"
+);
+
+if(!container)
+return;
+
+const people=
+getPeople(area);
+
+const active=
+getIdentity(area);
+
+
+if(!people.length){
+
+container.innerHTML=
+'<div class="staff-empty">Agrega primero al personal.</div>';
+
+return;
+
+}
+
+
+container.innerHTML=
+people.map(
+function(name){
+
+const selected=
+name===active
+?"active"
+:"";
+
+return`
+
+<button
+class="identity-person ${selected}"
+onclick="setIdentity('${area}','${escapeHtml(name).replace(/'/g,"&#039;")}')"
+>
+
+${escapeHtml(name)}
+
+</button>
+
+`;
+
+}
+).join("");
+
+}
+
+
+/* PERSONAL */
+
+function renderPeopleManager(area){
+
+const list=
+document.getElementById(
+area+"StaffList"
+);
+
+if(!list)
+return;
+
+const people=
+getPeople(area);
+
+
+if(!people.length){
+
+list.innerHTML=
+'<div class="staff-empty">No hay personas agregadas todavía.</div>';
+
+return;
+
+}
+
+
+list.innerHTML=
+people.map(
+function(name,index){
+
+return`
+
+<div class="staff-chip">
+
+<span>
+${escapeHtml(name)}
+</span>
+
+<button
+class="staff-remove"
+title="Eliminar persona"
+onclick="removePerson('${area}',${index})"
+>
+×
+</button>
+
+</div>
+
+`;
+
+}
+).join("");
+
+}
+
+
+function addPerson(area){
+
+const input=
+document.getElementById(
+area+"StaffInput"
+);
+
+if(!input)
+return;
+
+const name=
+input.value.trim();
+
+
+if(!name){
+
+alert(
+"Escribe el nombre de la persona."
+);
+
+input.focus();
+
+return;
+
+}
+
+
+const people=
+getPeople(area);
+
+
+const exists=
+people.some(
+function(person){
+
+return person.toLowerCase()===
+name.toLowerCase();
+
+}
+);
+
+
+if(exists){
+
+alert(
+"Esa persona ya está agregada."
+);
+
+input.focus();
+
+return;
+
+}
+
+
+people.push(name);
+
+savePeople(
+area,
+people
+);
+
+input.value="";
+
+renderPeopleManager(area);
+
+renderIdentity(area);
+
+loadArea(area);
+
+input.focus();
+
+}
+
+
+function removePerson(area,index){
+
+const people=
+getPeople(area);
+
+const name=
+people[index];
+
+
+if(!name)
+return;
+
+
+const ok=
+confirm(
+
+'¿Eliminar a "'+
+name+
+'" del personal de '+
+(area==="kitchen"
+?"Cocina"
+:"Barra")+
+"?\n\n"+
+"Los registros anteriores no se borrarán."
+
+);
+
+
+if(!ok)
+return;
+
+
+people.splice(
+index,
+1
+);
+
+savePeople(
+area,
+people
+);
+
+
+if(
+getIdentity(area)===name
+){
+
+localStorage.removeItem(
+identityKey(area)
+);
+
+}
+
+
+renderPeopleManager(area);
+
+renderIdentity(area);
+
+loadArea(area);
+
+}
+
+
+/* REGISTRO RÁPIDO */
+
+function togglePersonRecord(
+area,
+type,
+index
+){
+
+const person=
+getIdentity(area);
+
+
+if(!person){
+
+alert(
+"Primero selecciona quién eres."
+);
+
+return;
+
+}
+
+
+let records=
+getRecords(
+area,
+type,
+index
+);
+
+
+const existing=
+records.find(
+function(record){
+
+return record.name===person;
+
+}
+);
+
+
+if(existing){
+
+records=
+records.filter(
+function(record){
+
+return record.name!==person;
+
+}
+);
+
+}else{
+
+records.push({
+
+name:person,
+
+time:currentTime(),
+
+timestamp:Date.now()
+
+});
+
+}
+
+
+saveRecords(
+area,
+type,
+index,
+records
+);
+
+
+const key=
+taskKey(
+area,
+type,
+index
+);
+
+
+if(records.length){
+
+localStorage.setItem(
+key,
+"completed"
+);
+
+}else{
+
+localStorage.removeItem(
+key
+);
+
+}
+
+
+loadArea(area);
+
+}
+
+
 /* TAREAS */
 
 function renderTasks(
@@ -1285,7 +1897,9 @@ containerId
 ){
 
 const container=
-document.getElementById(containerId);
+document.getElementById(
+containerId
+);
 
 container.innerHTML="";
 
@@ -1319,6 +1933,20 @@ key+"-note"
 )||"";
 
 
+const identity=
+getIdentity(area);
+
+
+const mine=
+records.some(
+function(record){
+
+return record.name===identity;
+
+}
+);
+
+
 const task=
 document.createElement("div");
 
@@ -1350,16 +1978,65 @@ ${escapeHtml(item)}
 
 <div class="people-label">
 
-👆 Toca el nombre cuando realice esta actividad:
+${
+identity
+
+?
+
+`👤 ${escapeHtml(identity)}
+· toca para registrar esta actividad:`
+
+:
+
+`👆 Selecciona tu nombre arriba
+o toca el nombre de quien realizó la actividad:`
+
+}
 
 </div>
+
+
+${
+identity
+
+?
+
+`
+
+<button
+class="quick-register"
+onclick="togglePersonRecord(
+'${area}',
+'${type}',
+${index}
+)"
+>
+
+${
+mine
+?
+"↩️ Quitar mi registro"
+:
+"✓ REGISTRAR QUE LA HICE"
+}
+
+</button>
+
+`
+
+:
+
+""
+
+}
 
 
 <div class="people">
 
 ${
-PEOPLE[area]
-.map(function(person){
+getPeople(area)
+.map(
+function(person){
 
 const already=
 records.some(
@@ -1367,7 +2044,8 @@ function(record){
 
 return record.name===person;
 
-});
+}
+);
 
 
 return`
@@ -1385,7 +2063,8 @@ ${escapeHtml(person)}
 
 `;
 
-})
+}
+)
 .join("")
 }
 
@@ -1399,7 +2078,19 @@ records.length
 
 ?
 
-records.map(
+records
+.slice()
+.sort(
+function(a,b){
+
+return(
+(a.timestamp||0)-
+(b.timestamp||0)
+);
+
+}
+)
+.map(
 function(record){
 
 return`
@@ -1407,22 +2098,27 @@ return`
 <div class="activity-entry">
 
 <span>
+
 👤
 <strong>
 ${escapeHtml(record.name)}
 </strong>
+
 </span>
 
 <span>
+
 🕐
 ${escapeHtml(record.time)}
+
 </span>
 
 </div>
 
 `;
 
-})
+}
+)
 .join("")
 
 :
@@ -1455,7 +2151,8 @@ value="${escapeHtml(note)}"
 
 task
 .querySelectorAll(".person")
-.forEach(function(button){
+.forEach(
+function(button){
 
 button.addEventListener(
 "click",
@@ -1479,12 +2176,11 @@ function(record){
 
 return record.name===person;
 
-});
+}
+);
 
 
 if(existing){
-
-/* Quitar registro */
 
 records=
 records.filter(
@@ -1496,8 +2192,6 @@ return record.name!==person;
 );
 
 }else{
-
-/* Registrar persona + hora */
 
 records.push({
 
@@ -1544,7 +2238,7 @@ loadArea(area);
 });
 
 
-/* OBSERVACIÓN */
+/* OBSERVACIONES */
 
 task
 .querySelector(".note")
@@ -1568,7 +2262,102 @@ container.appendChild(task);
 }
 
 
-/* CONJUNTO DE TAREAS */
+/* ACTIVIDADES */
+
+const TASKS={
+
+kitchen:{
+
+daily:[
+
+"Loza limpia, seca y acomodada",
+
+"Piso barrido y trapeado",
+
+"Plancha limpia",
+
+"Estufa limpia",
+
+"Baños María limpios",
+
+"2 Microondas limpios",
+
+"Loza y utensilios acomodados",
+
+"Área de trabajo limpia y despejada",
+
+"Limpieza de derrames inmediata",
+
+"Mesa del centro limpia y acomodada"
+
+],
+
+deep:[
+
+"Hornos – Limpieza profunda",
+
+"Charolas – Lavado y secado",
+
+"Paredes – Limpieza general",
+
+"Baños María – Vaciar y lavar",
+
+"Campana – Limpieza de grasa"
+
+],
+
+scheduled:[
+
+"Acomodar Bodega – Viernes",
+
+"Acomodar Bodega – Sábado"
+
+]
+
+},
+
+bar:{
+
+daily:[
+
+"Preparar Cold Brew",
+
+"Rellenar recibidor",
+
+"Tirar basura",
+
+"Acomodar pan",
+
+"Rellenar vasos (según sea necesario)",
+
+"Limpiar cafeteras por fuera",
+
+"Limpieza de mesas y sillas",
+
+"Limpieza de baños"
+
+],
+
+scheduled:[
+
+"Acomodar Bodega – Viernes",
+
+"Acomodar Bodega – Sábado",
+
+"Limpieza profunda de 2 cafeteras – Sábado",
+
+"Limpieza de Molino – Sábado",
+
+"Realizar Descalcificado – Sábado"
+
+]
+
+}
+
+};
+
+
+/* CONJUNTOS */
 
 function getTaskSets(area){
 
@@ -1669,10 +2458,12 @@ pending:pending,
 
 percent:
 total
-?Math.round(
+?
+Math.round(
 done/total*100
 )
-:0
+:
+0
 
 };
 
@@ -1789,19 +2580,22 @@ container.innerHTML=`
 
 container.innerHTML=
 stats.pending
-.map(function(item){
+.map(
+function(item){
 
 return`
 
 <div class="pending">
 
-⚠️ ${escapeHtml(item)}
+⚠️
+${escapeHtml(item)}
 
 </div>
 
 `;
 
-})
+}
+)
 .join("");
 
 }
@@ -1882,7 +2676,8 @@ document
 .querySelectorAll(
 `.close-button[data-area="${area}"]`
 )
-.forEach(function(button){
+.forEach(
+function(button){
 
 button.classList.toggle(
 "selected",
@@ -2055,13 +2850,12 @@ function(record){
 
 return record.name;
 
-});
+}
+);
 
 }
-
 )
 
-)
 ];
 
 
@@ -2091,12 +2885,16 @@ completed.length/
 data.length*
 100
 )
-:0;
+:
+0;
 
 
 let text=
+
 `${icon} *CIERRE DE TURNO — ${areaName}*\n`+
+
 `📅 Fecha: ${formatDateEs(date)}\n`+
+
 `🕐 Turno: ${turn}\n\n`;
 
 
@@ -2109,7 +2907,8 @@ if(peopleWorked.length){
 peopleWorked.forEach(
 function(name){
 
-text+=`• ${name}\n`;
+text+=
+`• ${name}\n`;
 
 }
 );
@@ -2199,6 +2998,7 @@ text+=
 
 text+=
 `\n📊 *AVANCE: ${percent}%*\n`+
+
 `✅ ${completed.length} de ${data.length} actividades completadas\n`;
 
 
@@ -2256,7 +3056,7 @@ return text;
 }
 
 
-/* WHATSAPP NORMAL */
+/* WHATSAPP */
 
 function sendWhatsApp(area){
 
@@ -2271,31 +3071,44 @@ navigator.clipboard.writeText
 
 navigator.clipboard
 .writeText(report)
-.then(function(){
+.then(
+function(){
 
 window.open(
+
 "https://wa.me/?text="+
 encodeURIComponent(report),
+
 "_blank"
+
 );
 
-})
-.catch(function(){
+}
+)
+.catch(
+function(){
 
 window.open(
+
 "https://wa.me/?text="+
 encodeURIComponent(report),
+
 "_blank"
+
 );
 
-});
+}
+);
 
 }else{
 
 window.open(
+
 "https://wa.me/?text="+
 encodeURIComponent(report),
+
 "_blank"
+
 );
 
 }
@@ -2303,14 +3116,85 @@ encodeURIComponent(report),
 }
 
 
-/* CARGAR ÁREA */
+/* LIMPIAR REGISTROS ANTIGUOS */
+
+function cleanOldUndefinedRecords(){
+
+["bar","kitchen"]
+.forEach(
+function(area){
+
+getTaskSets(area)
+.forEach(
+function(set){
+
+set.items.forEach(
+function(item,index){
+
+const key=
+peopleKey(
+area,
+set.type,
+index
+);
+
+
+const records=
+getRecords(
+area,
+set.type,
+index
+);
+
+
+localStorage.setItem(
+key,
+JSON.stringify(records)
+);
+
+
+if(records.length){
+
+localStorage.setItem(
+taskKey(
+area,
+set.type,
+index
+),
+"completed"
+);
+
+}else{
+
+localStorage.removeItem(
+taskKey(
+area,
+set.type,
+index
+)
+);
+
+}
+
+});
+
+});
+
+});
+
+}
+
+
+/* CARGAR */
 
 function loadArea(area){
 
 const dateId=
 area==="bar"
-?"barDate"
-:"kitchenDate";
+?
+"barDate"
+:
+"kitchenDate";
 
 
 document.getElementById(
@@ -2327,7 +3211,8 @@ document
 .querySelectorAll(
 `.turn[data-area="${area}"]`
 )
-.forEach(function(button){
+.forEach(
+function(button){
 
 button.classList.toggle(
 "selected",
@@ -2385,6 +3270,10 @@ TASKS.bar.scheduled,
 
 renderSummary(area);
 
+renderPeopleManager(area);
+
+renderIdentity(area);
+
 loadClose(area);
 
 }
@@ -2409,11 +3298,58 @@ return String(text)
 }
 
 
+/* ENTER PARA AGREGAR PERSONA */
+
+document.addEventListener(
+"keydown",
+function(event){
+
+if(event.key!=="Enter")
+return;
+
+const target=
+event.target;
+
+
+if(
+target &&
+target.classList.contains(
+"staff-input"
+)
+){
+
+const area=
+target.id.replace(
+"StaffInput",
+""
+);
+
+
+if(
+area==="bar"||
+area==="kitchen"
+){
+
+event.preventDefault();
+
+addPerson(area);
+
+}
+
+}
+
+}
+);
+
+
 /* INICIO */
 
 document.addEventListener(
 "DOMContentLoaded",
 function(){
+
+cleanOldUndefinedRecords();
+
 
 document.getElementById(
 "barDate"
