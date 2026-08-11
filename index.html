@@ -3,232 +3,207 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#173B63">
+<meta name="theme-color" content="#8b5e3c">
 
 <title>Masa Madre · Control de Limpieza</title>
 
 <style>
-* {
-  box-sizing: border-box;
+*{
+  box-sizing:border-box;
 }
 
-body {
-  margin: 0;
-  background: #f5efe8;
-  color: #173B63;
-  font-family: Georgia, "Times New Roman", serif;
+body{
+  margin:0;
+  background:#f8f3ed;
+  color:#403229;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 
-.app {
-  min-height: 100vh;
-  padding: 28px 18px 45px;
+button{
+  font:inherit;
 }
 
-.container {
-  width: 100%;
-  max-width: 520px;
-  margin: auto;
+.app{
+  min-height:100vh;
+  padding:24px 16px 40px;
 }
 
-/* =========================
-   ENCABEZADO
-========================= */
-
-.header {
-  text-align: center;
-  margin-bottom: 32px;
+.header{
+  text-align:center;
+  margin-bottom:25px;
 }
 
-.brand {
-  margin: 0;
-  font-size: 40px;
-  letter-spacing: 6px;
-  font-weight: bold;
-  color: #173B63;
+.logo{
+  font-size:45px;
 }
 
-.subtitle {
-  margin-top: 5px;
-  color: #9b3f32;
-  font-size: 15px;
-  letter-spacing: 5px;
+h1,h2,h3{
+  font-family:Georgia,serif;
+  color:#6b432b;
 }
 
-.line {
-  width: 75px;
-  height: 2px;
-  background: #9b3f32;
-  margin: 17px auto;
+h1{
+  margin:0;
+  font-size:30px;
 }
 
-/* =========================
-   PANTALLAS
-========================= */
-
-.screen {
-  display: none;
+.subtitle{
+  color:#806f64;
+  margin-top:6px;
 }
 
-.screen.active {
-  display: block;
+.screen{
+  display:none;
+  max-width:700px;
+  margin:auto;
 }
 
-/* =========================
-   INICIO
-========================= */
-
-.welcome {
-  text-align: center;
-  margin-bottom: 27px;
+.screen.active{
+  display:block;
 }
 
-.welcome h2 {
-  margin: 0 0 8px;
-  font-size: 26px;
+.cards{
+  display:grid;
+  gap:17px;
 }
 
-.welcome p {
-  margin: 0;
-  color: #806b59;
-  font-size: 15px;
+.card{
+  border:0;
+  border-radius:25px;
+  padding:25px;
+  text-align:left;
+  box-shadow:0 8px 24px rgba(74,48,31,.12);
+  cursor:pointer;
 }
 
-/* =========================
-   BOTONES DE ÁREA
-========================= */
-
-.area-button {
-  width: 100%;
-  padding: 25px 20px;
-  margin-bottom: 17px;
-  border: 1px solid #d5c4b3;
-  border-radius: 18px;
-  background: #fffaf5;
-  color: #173B63;
-  font-family: Georgia, "Times New Roman", serif;
-  box-shadow: 0 5px 15px rgba(70,45,25,.08);
-  cursor: pointer;
+.card:active{
+  transform:scale(.98);
 }
 
-.area-button:active {
-  transform: scale(.98);
+.cafe{
+  background:linear-gradient(135deg,#ead6c2,#f8e9d9);
 }
 
-.area-icon {
-  display: block;
-  font-size: 40px;
-  margin-bottom: 8px;
+.kitchen{
+  background:linear-gradient(135deg,#f0dfc7,#fff5e9);
 }
 
-.area-title {
-  display: block;
-  font-size: 25px;
-  font-weight: bold;
-  letter-spacing: 2px;
+.icon{
+  font-size:40px;
 }
 
-.area-description {
-  display: block;
-  margin-top: 6px;
-  color: #806b59;
-  font-size: 14px;
+.card h2{
+  margin:8px 0 5px;
 }
 
-/* =========================
-   REGRESAR
-========================= */
-
-.back {
-  border: none;
-  background: transparent;
-  color: #9b3f32;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 16px;
-  padding: 0;
-  margin-bottom: 20px;
-  cursor: pointer;
+.card p{
+  margin:0;
+  color:#725f52;
 }
 
-/* =========================
-   TÍTULOS
-========================= */
-
-.section-title {
-  text-align: center;
-  font-size: 29px;
-  margin: 5px 0 7px;
+.back{
+  border:0;
+  background:white;
+  border-radius:14px;
+  padding:10px 16px;
+  margin-bottom:18px;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+  color:#65452f;
 }
 
-.section-subtitle {
-  text-align: center;
-  color: #806b59;
-  margin: 0 0 25px;
+.section-title{
+  font-size:25px;
+  margin:10px 0 14px;
 }
 
-/* =========================
-   EQUIPO
-========================= */
-
-.team-card {
-  background: #fffaf5;
-  border: 1px solid #d5c4b3;
-  border-radius: 18px;
-  padding: 20px;
-  box-shadow: 0 5px 15px rgba(70,45,25,.07);
+.small{
+  font-size:14px;
+  color:#88766a;
 }
 
-.team-title {
-  text-align: center;
-  color: #9b3f32;
-  font-size: 18px;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
+.task{
+  background:white;
+  border-radius:18px;
+  padding:15px;
+  margin:10px 0;
+  box-shadow:0 4px 15px rgba(74,48,31,.08);
 }
 
-.person {
-  display: flex;
-  align-items: center;
-  padding: 14px 5px;
-  border-bottom: 1px solid #eadfd4;
-  font-size: 18px;
+.task-row{
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
-.person:last-child {
-  border-bottom: none;
+.check{
+  width:29px;
+  height:29px;
+  min-width:29px;
+  border-radius:50%;
+  border:2px solid #b98b68;
+  background:white;
+  color:white;
+  display:grid;
+  place-items:center;
+  padding:0;
 }
 
-.person-icon {
-  margin-right: 12px;
-  font-size: 22px;
+.check.done{
+  background:#8b5e3c;
 }
 
-/* =========================
-   BOTÓN DE LIMPIEZA
-========================= */
-
-.clean-button {
-  width: 100%;
-  margin-top: 20px;
-  padding: 17px;
-  border: none;
-  border-radius: 14px;
-  background: #173B63;
-  color: white;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 17px;
-  cursor: pointer;
+.task.done .name{
+  text-decoration:line-through;
+  opacity:.55;
 }
 
-/* =========================
-   PIE
-========================= */
+.name{
+  font-weight:650;
+  flex:1;
+}
 
-.footer {
-  text-align: center;
-  margin-top: 35px;
-  color: #9b3f32;
-  font-size: 12px;
-  letter-spacing: 2px;
+.people{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:11px;
+}
+
+.person{
+  border:1px solid #ddc5af;
+  background:#fff7f0;
+  border-radius:20px;
+  padding:7px 11px;
+  font-size:13px;
+  color:#5e4638;
+}
+
+.person.selected{
+  background:#8b5e3c;
+  color:white;
+  border-color:#8b5e3c;
+}
+
+.note{
+  width:100%;
+  border:1px solid #ead9ca;
+  border-radius:12px;
+  padding:10px;
+  margin-top:10px;
+  background:#fffdfb;
+}
+
+.divider{
+  height:1px;
+  background:#ead9ca;
+  margin:25px 0;
+}
+
+.footer{
+  text-align:center;
+  margin-top:32px;
+  color:#9a887b;
+  font-size:13px;
 }
 </style>
 </head>
@@ -236,189 +211,444 @@ body {
 <body>
 
 <div class="app">
-<div class="container">
-
-<!-- =========================
-     ENCABEZADO
-========================= -->
 
 <header class="header">
-  <h1 class="brand">MASA MADRE</h1>
-  <div class="subtitle">BOULANGERIE</div>
-  <div class="line"></div>
+  <div class="logo">🥐</div>
+  <h1>Masa Madre</h1>
+  <p class="subtitle">Control de limpieza y organización</p>
 </header>
 
 
-<!-- =========================
-     INICIO
-========================= -->
+<!-- INICIO -->
 
 <section id="home" class="screen active">
 
-  <div class="welcome">
-    <h2>Control de limpieza</h2>
-    <p>Selecciona tu área de trabajo</p>
+  <div class="cards">
+
+    <button class="card cafe" onclick="showScreen('bar')">
+      <div class="icon">☕</div>
+      <h2>Barra y Cafetería</h2>
+      <p>Control diario y actividades programadas</p>
+    </button>
+
+    <button class="card kitchen" onclick="showScreen('kitchen')">
+      <div class="icon">👩🏻‍🍳</div>
+      <h2>Cocina</h2>
+      <p>Limpieza diaria, profunda y actividades</p>
+    </button>
+
   </div>
-
-  <button class="area-button" onclick="showScreen('cocina')">
-    <span class="area-icon">👨🏻‍🍳</span>
-    <span class="area-title">COCINA</span>
-    <span class="area-description">
-      Equipo de cocina
-    </span>
-  </button>
-
-  <button class="area-button" onclick="showScreen('barra')">
-    <span class="area-icon">☕</span>
-    <span class="area-title">BARISTA</span>
-    <span class="area-description">
-      Equipo de barra y cafetería
-    </span>
-  </button>
 
 </section>
 
 
-<!-- =========================
-     COCINA
-========================= -->
+<!-- BARRA -->
 
-<section id="cocina" class="screen">
+<section id="bar" class="screen">
 
   <button class="back" onclick="showScreen('home')">
     ← Regresar
   </button>
 
-  <h2 class="section-title">👨🏻‍🍳 Cocina</h2>
+  <h2 class="section-title">
+    ☕ Barra y Cafetería
+  </h2>
 
-  <p class="section-subtitle">
-    Equipo de cocina
+  <p class="small">
+    Marca cada actividad conforme se vaya realizando.
   </p>
 
-  <div class="team-card">
-
-    <div class="team-title">
-      PERSONAL
-    </div>
-
-    <div class="person">
-      <span class="person-icon">👩🏻‍🍳</span>
-      Jessica
-    </div>
-
-    <div class="person">
-      <span class="person-icon">👨🏻‍🍳</span>
-      David
-    </div>
-
-    <div class="person">
-      <span class="person-icon">👩🏻‍🍳</span>
-      Itzel · Cocina
-    </div>
-
-    <div class="person">
-      <span class="person-icon">👨🏻‍🍳</span>
-      César
-    </div>
-
-    <div class="person">
-      <span class="person-icon">👨🏻‍🍳</span>
-      Ángel
-    </div>
-
-  </div>
-
-  <button class="clean-button">
-    🧽 Control de limpieza
-  </button>
+  <div id="barTasks"></div>
 
 </section>
 
 
-<!-- =========================
-     BARRA
-========================= -->
+<!-- COCINA -->
 
-<section id="barra" class="screen">
+<section id="kitchen" class="screen">
 
   <button class="back" onclick="showScreen('home')">
     ← Regresar
   </button>
 
-  <h2 class="section-title">☕ Barista</h2>
+  <h2 class="section-title">
+    👩🏻‍🍳 Cocina
+  </h2>
 
-  <p class="section-subtitle">
-    Equipo de barra y cafetería
+  <p class="small">
+    Limpieza y organización del área.
   </p>
 
-  <div class="team-card">
 
-    <div class="team-title">
-      PERSONAL
-    </div>
+  <h3 class="section-title">
+    🍽️ Limpieza diaria
+  </h3>
 
-    <div class="person">
-      <span class="person-icon">☕</span>
-      Jessica
-    </div>
+  <div id="daily"></div>
 
-    <div class="person">
-      <span class="person-icon">☕</span>
-      Paola
-    </div>
 
-    <div class="person">
-      <span class="person-icon">☕</span>
-      Itzel · Barra
-    </div>
+  <div class="divider"></div>
 
-    <div class="person">
-      <span class="person-icon">☕</span>
-      Ángela
-    </div>
 
-    <div class="person">
-      <span class="person-icon">☕</span>
-      Karla
-    </div>
+  <h3 class="section-title">
+    🧽 Limpieza profunda / semanal
+  </h3>
 
-  </div>
+  <div id="deep"></div>
 
-  <button class="clean-button">
-    🧽 Control de limpieza
-  </button>
+
+  <div class="divider"></div>
+
+
+  <h3 class="section-title">
+    📅 Actividades programadas
+  </h3>
+
+  <div id="scheduled"></div>
 
 </section>
 
-
-<!-- =========================
-     PIE
-========================= -->
 
 <div class="footer">
-  MASA MADRE · BOULANGERIE
+  Masa Madre · Boulangerie
 </div>
 
-</div>
 </div>
 
 
 <script>
 
-function showScreen(screenId) {
+/* =========================
+   PERSONAS
+========================= */
 
-  document.querySelectorAll(".screen").forEach(function(screen) {
-    screen.classList.remove("active");
-  });
+const kitchenPeople = [
+  "Jessica",
+  "David",
+  "Itzel · Cocina",
+  "César",
+  "Ángel"
+];
 
-  document.getElementById(screenId).classList.add("active");
+const barPeople = [
+  "Jessica",
+  "Paola",
+  "Itzel · Barra",
+  "Ángela",
+  "Karla"
+];
 
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+
+/* =========================
+   COCINA · LIMPIEZA DIARIA
+========================= */
+
+const kitchenDaily = [
+
+  "Loza limpia, seca y acomodada",
+
+  "Piso barrido y trapeado",
+
+  "Plancha limpia",
+
+  "Baños María limpios",
+
+  "2 Microondas limpios",
+
+  "Loza y utensilios acomodados",
+
+  "Área de trabajo limpia y despejada",
+
+  "Limpieza de derrames inmediata"
+
+];
+
+
+/* =========================
+   COCINA · LIMPIEZA PROFUNDA
+========================= */
+
+const deepCleaning = [
+
+  "Hornos – Limpieza profunda",
+
+  "Charolas – Lavado y secado",
+
+  "Paredes – Limpieza general",
+
+  "Baños María – Vaciar y lavar",
+
+  "Campana – Limpieza de grasa"
+
+];
+
+
+/* =========================
+   ACTIVIDADES PROGRAMADAS
+========================= */
+
+const scheduledActivities = [
+
+  "Acomodar Bodega – Viernes",
+
+  "Acomodar Bodega – Sábado",
+
+  "Limpieza profunda 2 cafeteras – Sábado",
+
+  "Limpieza de Molino – Sábado",
+
+  "Realizar Descaferinado – Sábado"
+
+];
+
+
+/* =========================
+   BARRA Y CAFETERÍA
+========================= */
+
+const barActivities = [
+
+  "Preparar Cold Brew",
+
+  "Rellenar recibidor",
+
+  "Tirar basura",
+
+  "Acomodar pan",
+
+  "Rellenar vasos (según sea necesario)",
+
+  "Limpiar cafeteras por fuera",
+
+  "Limpieza de mesas y sillas",
+
+  "Limpieza profunda de baños",
+
+  "Acomodar Bodega – Viernes",
+
+  "Acomodar Bodega – Sábado",
+
+  "Limpieza profunda 2 cafeteras – Sábado",
+
+  "Limpieza de Molino – Sábado",
+
+  "Realizar Descaferinado – Sábado"
+
+];
+
+
+/* =========================
+   GUARDAR DATOS
+========================= */
+
+function storageKey(section,index,item){
+
+  return "masa-madre-" +
+         section +
+         "-" +
+         index +
+         "-" +
+         item;
+
+}
+
+
+/* =========================
+   CREAR TAREAS
+========================= */
+
+function createTasks(items,people,target,section){
+
+  const container =
+    document.getElementById(target);
+
+  container.innerHTML = "";
+
+
+  items.forEach((item,index)=>{
+
+    const id =
+      storageKey(section,index,item);
+
+    const completed =
+      localStorage.getItem(id) === "done";
+
+    const selectedPerson =
+      localStorage.getItem(id+"-person") || "";
+
+
+    const task =
+      document.createElement("div");
+
+    task.className =
+      "task" +
+      (completed ? " done" : "");
+
+
+    task.innerHTML = `
+
+      <div class="task-row">
+
+        <button class="check ${completed ? "done" : ""}">
+          ${completed ? "✓" : ""}
+        </button>
+
+        <div class="name">
+          ${item}
+        </div>
+
+      </div>
+
+
+      <div class="people">
+
+        ${people.map(person => `
+
+          <button
+            class="person ${
+              selectedPerson === person
+              ? "selected"
+              : ""
+            }">
+
+            ${person}
+
+          </button>
+
+        `).join("")}
+
+      </div>
+
+
+      <input
+        class="note"
+        placeholder="Observaciones (opcional)"
+      >
+
+    `;
+
+
+    /* MARCAR COMO REALIZADA */
+
+    task
+      .querySelector(".check")
+      .onclick = function(){
+
+        if(completed){
+
+          localStorage.removeItem(id);
+
+        }else{
+
+          localStorage.setItem(
+            id,
+            "done"
+          );
+
+        }
+
+        renderAll();
+
+      };
+
+
+    /* SELECCIONAR RESPONSABLE */
+
+    task
+      .querySelectorAll(".person")
+      .forEach(button=>{
+
+        button.onclick = function(){
+
+          localStorage.setItem(
+            id+"-person",
+            button.textContent.trim()
+          );
+
+          renderAll();
+
+        };
+
+      });
+
+
+    container.appendChild(task);
+
   });
 
 }
+
+
+/* =========================
+   RENDERIZAR TODO
+========================= */
+
+function renderAll(){
+
+  createTasks(
+    kitchenDaily,
+    kitchenPeople,
+    "daily",
+    "kitchen-daily"
+  );
+
+
+  createTasks(
+    deepCleaning,
+    kitchenPeople,
+    "deep",
+    "kitchen-deep"
+  );
+
+
+  createTasks(
+    scheduledActivities,
+    kitchenPeople,
+    "scheduled",
+    "scheduled"
+  );
+
+
+  createTasks(
+    barActivities,
+    barPeople,
+    "barTasks",
+    "bar"
+  );
+
+}
+
+
+/* =========================
+   CAMBIAR DE PANTALLA
+========================= */
+
+function showScreen(screenId){
+
+  document
+    .querySelectorAll(".screen")
+    .forEach(screen=>{
+
+      screen.classList.remove("active");
+
+    });
+
+
+  document
+    .getElementById(screenId)
+    .classList.add("active");
+
+
+  window.scrollTo(0,0);
+
+}
+
+
+/* =========================
+   INICIAR
+========================= */
+
+renderAll();
 
 </script>
 
