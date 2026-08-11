@@ -5,16 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#173B63">
 <title>Masa Madre · Control de Limpieza</title>
-
 <style>
 *{box-sizing:border-box}
-body{
-margin:0;
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-background:#F8F1E7;
-color:#403229
-}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#F8F1E7;color:#403229}
 button,input,textarea{font:inherit}
+button{cursor:pointer}
 .screen{display:none;min-height:100vh}
 .screen.active{display:block}
 
@@ -28,33 +23,40 @@ padding:25px;
 background:#173B63;
 color:white
 }
+
 .cover-content{max-width:650px}
 .croissant{font-size:75px}
+
 .cover-title{
 font:clamp(42px,11vw,78px) Georgia,serif;
 letter-spacing:8px;
 margin:20px 0
 }
+
 .cover-boulangerie{
 color:#B84B40;
 font:bold 22px Georgia,serif;
 letter-spacing:7px
 }
+
 .cover-line{
 width:100px;
 height:3px;
 background:#C7A66A;
 margin:30px auto
 }
+
 .cover-control{
 font:32px Georgia,serif;
 letter-spacing:2px
 }
+
 .cover-text{
 font-size:17px;
 line-height:1.5;
 color:#F6EEE3
 }
+
 .start{
 margin-top:30px;
 padding:16px 35px;
@@ -71,22 +73,30 @@ min-height:100vh;
 padding:30px 18px 50px;
 background:linear-gradient(#F8F1E7,#FFF9F2)
 }
-.control,.areas{
+
+.control,.areas,.who-wrap{
 max-width:820px;
 margin:auto
 }
+
 .welcome{
 text-align:center;
 margin:30px auto
 }
+
 .welcome h1{
 color:#173B63;
 font:48px Georgia,serif;
 margin:0
 }
+
 .welcome p{color:#786A60}
 
-.areas{display:grid;gap:20px}
+.areas{
+display:grid;
+gap:20px
+}
+
 .area{
 width:100%;
 padding:30px;
@@ -94,18 +104,28 @@ border-radius:30px;
 text-align:left;
 border:1px solid #DCC9B5;
 box-shadow:0 10px 25px #4a34261a;
-cursor:pointer
+background:white
 }
-.area.bar{background:linear-gradient(135deg,#E9D1B9,#FFF8EF)}
-.area.kitchen{background:linear-gradient(135deg,#DCE8F2,#FFFBF4)}
+
+.area.bar{
+background:linear-gradient(135deg,#E9D1B9,#FFF8EF)
+}
+
+.area.kitchen{
+background:linear-gradient(135deg,#DCE8F2,#FFFBF4)
+}
+
 .icon{font-size:50px}
+
 .area h2{
 font:34px Georgia,serif;
 margin:12px 0 5px
 }
+
 .bar h2{color:#76533D}
 .kitchen h2{color:#173B63}
 .area p{color:#75675D}
+
 .enter{
 display:inline-block;
 margin-top:20px;
@@ -122,11 +142,13 @@ border-radius:13px;
 padding:10px 15px;
 margin-bottom:18px
 }
+
 .title{
 color:#173B63;
 font:40px Georgia,serif;
 margin:0
 }
+
 .desc{color:#786A60}
 
 .box{
@@ -137,51 +159,82 @@ padding:18px;
 margin:18px 0;
 box-shadow:0 6px 18px #4b342510
 }
+
 .box h2{
 margin:0 0 12px;
 color:#A33F35;
 font:22px Georgia,serif
 }
+
 .small{
 color:#85756A;
 font-size:13px
 }
 
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px
-}
-.field label{
-display:block;
-font-size:12px;
-font-weight:bold;
-color:#806F63;
-margin-bottom:6px
-}
-.field input{
-width:100%;
-padding:11px;
-border:1px solid #DDCDB9;
-border-radius:12px
+.who{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:25px;
+background:linear-gradient(#F8F1E7,#FFF9F2)
 }
 
-.turns,.close{
-display:flex;
-gap:8px
+.who-card{
+width:min(520px,100%);
+background:#FFFDF9;
+border:1px solid #E0CFBD;
+border-radius:28px;
+padding:28px;
+box-shadow:0 12px 30px #4b342518;
+text-align:center
 }
-.turn,.close-button{
-flex:1;
-padding:10px;
+
+.who-icon{font-size:58px}
+
+.who-card h1{
+font:36px Georgia,serif;
+color:#173B63;
+margin:12px 0 5px
+}
+
+.who-card p{color:#786A60}
+
+.who-list{
+display:grid;
+gap:10px;
+margin-top:22px
+}
+
+.who-person{
+padding:14px;
 border:1px solid #D9C5B2;
-border-radius:12px;
+border-radius:14px;
 background:#FFF8F0;
-color:#604A3A
+color:#604A3A;
+font-weight:650
 }
-.turn.selected,.close-button.selected{
+
+.who-person.selected{
 background:#173B63;
 color:white;
 border-color:#173B63
+}
+
+.continue{
+width:100%;
+margin-top:18px;
+padding:14px;
+border:0;
+border-radius:14px;
+background:#A33F35;
+color:white;
+font-weight:bold
+}
+
+.continue:disabled{
+opacity:.45;
+cursor:not-allowed
 }
 
 .task{
@@ -191,11 +244,13 @@ border-radius:17px;
 padding:14px;
 margin-top:10px
 }
+
 .task-row{
 display:flex;
 align-items:center;
 gap:12px
 }
+
 .check{
 width:30px;
 height:30px;
@@ -206,36 +261,29 @@ display:grid;
 place-items:center;
 color:white
 }
+
 .check.done{
 background:#173B63;
 border-color:#173B63
 }
-.task-name{
-font-weight:650
-}
-.people-label{
+
+.task-name{font-weight:650}
+
+.record-button{
+width:100%;
 margin-top:12px;
-font-size:12px;
-color:#8A7769
-}
-.people{
-display:flex;
-flex-wrap:wrap;
-gap:7px;
-margin-top:7px
-}
-.person{
-padding:7px 10px;
+padding:11px;
 border:1px solid #D9C5B2;
-border-radius:999px;
+border-radius:12px;
 background:#FFF8F0;
 color:#604A3A;
-font-size:12px
+font-weight:650
 }
-.person.selected{
-background:#A33F35;
+
+.record-button.done{
+background:#173B63;
 color:white;
-border-color:#A33F35
+border-color:#173B63
 }
 
 .activity-log{
@@ -243,6 +291,7 @@ margin-top:10px;
 padding-top:8px;
 border-top:1px dashed #E1D3C4
 }
+
 .activity-entry{
 display:flex;
 justify-content:space-between;
@@ -253,27 +302,21 @@ border-radius:9px;
 background:#F8F1E7;
 font-size:12px
 }
+
 .activity-entry strong{color:#173B63}
+
 .activity-empty{
 font-size:12px;
 color:#9A8A7D;
 padding:5px 0
 }
 
-.note,.close-note{
-width:100%;
-margin-top:10px;
-padding:10px;
-border:1px solid #E5D7C8;
-border-radius:11px
-}
-.close-note{min-height:80px}
-
 .stats{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:9px
 }
+
 .stat{
 background:white;
 border:1px solid #E2D4C5;
@@ -281,15 +324,18 @@ border-radius:15px;
 padding:12px;
 text-align:center
 }
+
 .stat strong{
 display:block;
 font-size:23px;
 color:#173B63
 }
+
 .stat span{
 font-size:11px;
 color:#806F63
 }
+
 .progress{
 height:12px;
 background:#EADFD2;
@@ -297,11 +343,13 @@ border-radius:99px;
 overflow:hidden;
 margin-top:14px
 }
+
 .progress-bar{
 height:100%;
 background:#173B63;
 transition:.2s
 }
+
 .progress-text{
 text-align:center;
 font-size:12px;
@@ -317,6 +365,7 @@ padding:11px;
 margin-top:8px;
 font-size:13px
 }
+
 .empty{
 padding:12px;
 background:#EEF5EE;
@@ -335,6 +384,7 @@ background:#A33F35;
 color:white;
 font-weight:bold
 }
+
 .whatsapp-button{background:#218C4B}
 
 .saved{
@@ -346,6 +396,7 @@ color:#41604A;
 border-radius:12px;
 font-size:13px
 }
+
 .saved.show{display:block}
 
 .whatsapp-hint{
@@ -357,35 +408,13 @@ color:#49624F;
 font-size:12px
 }
 
-.guide{
-border-left:4px solid #A33F35;
-background:white;
-border-radius:14px;
-padding:13px;
-margin-top:9px
-}
-.guide strong{
-display:block;
-color:#173B63;
-font:16px Georgia,serif;
-margin-bottom:4px
-}
-.guide span{
-font-size:13px;
-line-height:1.5;
-color:#6F6258
-}
-
 @media(max-width:480px){
-.grid{grid-template-columns:1fr}
 .close{flex-direction:column}
 }
 </style>
 </head>
 
 <body>
-
-<!-- PORTADA -->
 
 <section id="cover">
 
@@ -420,8 +449,6 @@ COMENZAR →
 </section>
 
 
-<!-- INICIO -->
-
 <section id="home" class="screen">
 
 <div class="inner">
@@ -438,7 +465,7 @@ Selecciona tu área para comenzar
 
 <div class="areas">
 
-<button class="area bar" onclick="goTo('bar')">
+<button class="area bar" onclick="chooseArea('bar')">
 
 <div class="icon">☕</div>
 
@@ -455,7 +482,7 @@ ENTRAR AL CONTROL →
 </button>
 
 
-<button class="area kitchen" onclick="goTo('kitchen')">
+<button class="area kitchen" onclick="chooseArea('kitchen')">
 
 <div class="icon">👩🏻‍🍳</div>
 
@@ -478,7 +505,42 @@ ENTRAR AL CONTROL →
 </section>
 
 
-<!-- BARRA -->
+<section id="who" class="screen">
+
+<div class="who">
+
+<div class="who-card">
+
+<div class="who-icon" id="whoIcon">
+👤
+</div>
+
+<h1>
+¿Quién eres?
+</h1>
+
+<p>
+Selecciona tu nombre para continuar.
+</p>
+
+<div id="whoList" class="who-list">
+</div>
+
+<button
+id="continueButton"
+class="continue"
+disabled
+onclick="confirmPerson()"
+>
+CONTINUAR →
+</button>
+
+</div>
+
+</div>
+
+</section>
+
 
 <section id="bar" class="screen">
 
@@ -498,16 +560,23 @@ ENTRAR AL CONTROL →
 Control diario de preparación, orden y limpieza.
 </p>
 
+<div class="box">
+
+<h2>
+👤 Registrando como
+</h2>
+
+<div id="barCurrentPerson">
+</div>
+
+</div>
+
 
 <div class="box">
 
-<h2>📅 Día y turno</h2>
-
-<div class="grid">
-
-<div class="field">
-
-<label>Fecha</label>
+<h2>
+📅 Fecha
+</h2>
 
 <input
 id="barDate"
@@ -518,34 +587,13 @@ onchange="saveMeta('bar')"
 </div>
 
 
-<div class="field">
+<div class="box">
 
-<label>Turno</label>
+<h2>
+📊 Resumen del turno
+</h2>
 
-<div class="turns">
-
-<button
-class="turn"
-data-area="bar"
-data-turn="Mañana"
-onclick="setTurn('bar','Mañana')"
->
-☀️ Mañana
-</button>
-
-<button
-class="turn"
-data-area="bar"
-data-turn="Tarde"
-onclick="setTurn('bar','Tarde')"
->
-🌙 Tarde
-</button>
-
-</div>
-
-</div>
-
+<div id="barSummary">
 </div>
 
 </div>
@@ -553,48 +601,49 @@ onclick="setTurn('bar','Tarde')"
 
 <div class="box">
 
-<h2>📊 Resumen del turno</h2>
-
-<div id="barSummary"></div>
-
-</div>
-
-
-<div class="box">
-
-<h2>☕ Actividades diarias</h2>
+<h2>
+☕ Actividades diarias
+</h2>
 
 <p class="small">
-Toca el nombre de quien realiza la actividad.
-La hora se registra automáticamente.
+Toca “Registrar actividad” cuando termines una tarea.
 </p>
 
-<div id="barTasks"></div>
+<div id="barTasks">
+</div>
 
 </div>
 
 
 <div class="box">
 
-<h2>📅 Actividades programadas</h2>
+<h2>
+📅 Actividades programadas
+</h2>
 
-<div id="barScheduled"></div>
+<div id="barScheduled">
+</div>
 
 </div>
 
 
 <div class="box">
 
-<h2>⚠️ Pendientes</h2>
+<h2>
+⚠️ Pendientes
+</h2>
 
-<div id="barPending"></div>
+<div id="barPending">
+</div>
 
 </div>
 
 
 <div class="box">
 
-<h2>🏁 Cierre del turno</h2>
+<h2>
+🏁 Cierre del turno
+</h2>
 
 <div class="close">
 
@@ -665,8 +714,6 @@ Puedes pegarlo en el chat o grupo que quieras.
 </section>
 
 
-<!-- COCINA -->
-
 <section id="kitchen" class="screen">
 
 <div class="inner">
@@ -688,13 +735,21 @@ Control diario de limpieza, organización y cuidado del área.
 
 <div class="box">
 
-<h2>📅 Día y turno</h2>
+<h2>
+👤 Registrando como
+</h2>
 
-<div class="grid">
+<div id="kitchenCurrentPerson">
+</div>
 
-<div class="field">
+</div>
 
-<label>Fecha</label>
+
+<div class="box">
+
+<h2>
+📅 Fecha
+</h2>
 
 <input
 id="kitchenDate"
@@ -705,34 +760,13 @@ onchange="saveMeta('kitchen')"
 </div>
 
 
-<div class="field">
+<div class="box">
 
-<label>Turno</label>
+<h2>
+📊 Resumen del turno
+</h2>
 
-<div class="turns">
-
-<button
-class="turn"
-data-area="kitchen"
-data-turn="Mañana"
-onclick="setTurn('kitchen','Mañana')"
->
-☀️ Mañana
-</button>
-
-<button
-class="turn"
-data-area="kitchen"
-data-turn="Tarde"
-onclick="setTurn('kitchen','Tarde')"
->
-🌙 Tarde
-</button>
-
-</div>
-
-</div>
-
+<div id="kitchenSummary">
 </div>
 
 </div>
@@ -740,57 +774,61 @@ onclick="setTurn('kitchen','Tarde')"
 
 <div class="box">
 
-<h2>📊 Resumen del turno</h2>
-
-<div id="kitchenSummary"></div>
-
-</div>
-
-
-<div class="box">
-
-<h2>🍽️ Limpieza diaria</h2>
+<h2>
+🍽️ Limpieza diaria
+</h2>
 
 <p class="small">
-Toca el nombre de quien realiza la actividad.
-La hora se registra automáticamente.
+Toca “Registrar actividad” cuando termines una tarea.
 </p>
 
-<div id="kitchenDaily"></div>
+<div id="kitchenDaily">
+</div>
 
 </div>
 
 
 <div class="box">
 
-<h2>🧽 Limpieza profunda / semanal</h2>
+<h2>
+🧽 Limpieza profunda / semanal
+</h2>
 
-<div id="kitchenDeep"></div>
+<div id="kitchenDeep">
+</div>
 
 </div>
 
 
 <div class="box">
 
-<h2>📅 Actividades programadas</h2>
+<h2>
+📅 Actividades programadas
+</h2>
 
-<div id="kitchenScheduled"></div>
+<div id="kitchenScheduled">
+</div>
 
 </div>
 
 
 <div class="box">
 
-<h2>⚠️ Pendientes</h2>
+<h2>
+⚠️ Pendientes
+</h2>
 
-<div id="kitchenPending"></div>
+<div id="kitchenPending">
+</div>
 
 </div>
 
 
 <div class="box">
 
-<h2>🏁 Cierre del turno</h2>
+<h2>
+🏁 Cierre del turno
+</h2>
 
 <div class="close">
 
@@ -854,132 +892,6 @@ Puedes pegarlo en el chat o grupo que quieras.
 
 </div>
 
-
-<div class="box">
-
-<h2>
-🧼 Cosas que debemos cuidar todos
-</h2>
-
-
-<div class="guide">
-
-<strong>🔥 Hornos</strong>
-
-<span>
-Tenemos dos hornos y ambos deben mantenerse limpios.
-No dejar grasa, comida o escurrimientos pegados.
-Si algo se chorrea, se limpia en el momento.
-</span>
-
-</div>
-
-
-<div class="guide">
-
-<strong>🔥 Plancha</strong>
-
-<span>
-Debe quedar limpia y sin grasa acumulada.
-Antes de utilizar desengrasante, retirar o proteger
-los trastes que estén debajo para evitar que se contaminen.
-Los trastes limpios no deben terminar llenos de desengrasante.
-</span>
-
-</div>
-
-
-<div class="guide">
-
-<strong>🔥 Estufa</strong>
-
-<span>
-Debe mantenerse limpia y sin grasa ni restos de comida.
-</span>
-
-</div>
-
-
-<div class="guide">
-
-<strong>🍲 Baños María</strong>
-
-<span>
-Deben mantenerse limpios, sin salsa ni crema alrededor
-y revisar/cambiar el agua cuando sea necesario.
-No podemos dejar el agua sucia durante días.
-</span>
-
-</div>
-
-
-<div class="guide">
-
-<strong>📱 Microondas</strong>
-
-<span>
-Si algo se chorrea, se limpia en ese momento.
-No dejar que se seque y se pegue.
-</span>
-
-</div>
-
-
-<div class="guide">
-
-<strong>🍽️ Loza</strong>
-
-<span>
-No dejar la tarja llena de trastes.
-Los restos de comida se tiran a la basura y NO al resumidero.
-Todo traste lavado debe quedar acomodado en su lugar.
-Si una persona comienza la loza y otra la termina,
-ambas pueden registrarse.
-</span>
-
-</div>
-
-
-<div class="guide">
-
-<strong>🗄️ Refrigeradores</strong>
-
-<span>
-Mantenerlos ordenados por las secciones establecidas:
-verduras, salsas, cremas, etc.
-Si algo ya no sirve, se tira.
-Si sacamos algo, lo regresamos a su lugar.
-</span>
-
-</div>
-
-
-<div class="guide">
-
-<strong>🧹 Piso</strong>
-
-<span>
-Se debe mantener limpio durante el turno
-y al finalizar debe quedar barrido por debajo de las cosas,
-no solo el centro.
-</span>
-
-</div>
-
-
-<div class="guide">
-
-<strong>🧽 Mesa del centro</strong>
-
-<span>
-Debe mantenerse limpia y la parte de abajo también
-debe permanecer acomodada.
-</span>
-
-</div>
-
-</div>
-
 </div>
 
 </div>
@@ -989,15 +901,13 @@ debe permanecer acomodada.
 
 <script>
 
-/* PERSONAS */
-
 const PEOPLE={
 
 kitchen:[
 "Jessica",
 "David",
-"Itzel · Cocina",
 "César",
+"Itzel · Cocina",
 "Ángel"
 ],
 
@@ -1011,8 +921,6 @@ bar:[
 
 };
 
-
-/* ACTIVIDADES */
 
 const TASKS={
 
@@ -1072,7 +980,9 @@ scheduled:[
 };
 
 
-/* FECHA */
+let selectedArea="";
+let selectedPerson="";
+
 
 function today(){
 
@@ -1085,40 +995,103 @@ String(d.getDate()).padStart(2,"0");
 }
 
 
-function getDate(area){
+function getDate(a){
 
 return localStorage.getItem(
-"mm-"+area+"-date"
+"mm-"+a+"-date"
 )||today();
 
 }
 
 
-/* CLAVES */
-
-function taskKey(area,type,index){
+function taskKey(a,t,i){
 
 return "mm-"+
-area+"-"+
-getDate(area)+
+a+"-"+
+getDate(a)+
 "-"+
-type+
+t+
 "-"+
-index;
+i;
 
 }
 
 
-function peopleKey(area,type,index){
+function peopleKey(a,t,i){
 
-return taskKey(
-area,type,index
-)+"-people";
+return taskKey(a,t,i)+"-people";
 
 }
 
 
-/* NAVEGACIÓN */
+function escapeHtml(t){
+
+return String(t)
+
+.replace(/&/g,"&amp;")
+
+.replace(/</g,"&lt;")
+
+.replace(/>/g,"&gt;")
+
+.replace(/"/g,"&quot;")
+
+.replace(/'/g,"&#039;");
+
+}
+
+
+function getRecords(a,t,i){
+
+try{
+
+return JSON.parse(
+localStorage.getItem(
+peopleKey(a,t,i)
+)||"[]"
+)
+.filter(
+function(x){
+
+return x &&
+x.name &&
+x.time;
+
+}
+);
+
+}catch(e){
+
+return[];
+
+}
+
+}
+
+
+function saveRecords(a,t,i,r){
+
+localStorage.setItem(
+peopleKey(a,t,i),
+JSON.stringify(r)
+);
+
+}
+
+
+function now(){
+
+return new Intl.DateTimeFormat(
+"es-MX",
+{
+hour:"numeric",
+minute:"2-digit",
+hour12:true
+}
+).format(new Date());
+
+}
+
 
 function goTo(page){
 
@@ -1130,23 +1103,20 @@ page==="cover"
 
 document
 .querySelectorAll(".screen")
-.forEach(function(screen){
+.forEach(
+function(s){
 
-screen.classList.remove("active");
+s.classList.remove("active");
 
-});
+}
+);
 
 
 if(page!=="cover"){
 
-const target=
-document.getElementById(page);
-
-if(target){
-
-target.classList.add("active");
-
-}
+document
+.getElementById(page)
+.classList.add("active");
 
 }
 
@@ -1166,7 +1136,119 @@ window.scrollTo(0,0);
 }
 
 
-/* FECHA */
+function chooseArea(area){
+
+selectedArea=area;
+
+selectedPerson="";
+
+
+document.getElementById(
+"whoIcon"
+).textContent=
+area==="kitchen"
+?"👩🏻‍🍳"
+:"☕";
+
+
+const list=
+document.getElementById(
+"whoList"
+);
+
+
+list.innerHTML=
+PEOPLE[area]
+.map(
+function(p){
+
+return`
+
+<button
+class="who-person"
+data-person="${escapeHtml(p)}"
+onclick="selectPerson(this)"
+>
+
+${escapeHtml(p)}
+
+</button>
+
+`;
+
+}
+)
+.join("");
+
+
+document.getElementById(
+"continueButton"
+).disabled=true;
+
+
+goTo("who");
+
+}
+
+
+function selectPerson(btn){
+
+document
+.querySelectorAll(".who-person")
+.forEach(
+function(b){
+
+b.classList.remove(
+"selected"
+);
+
+}
+);
+
+
+btn.classList.add(
+"selected"
+);
+
+
+selectedPerson=
+btn.dataset.person;
+
+
+document.getElementById(
+"continueButton"
+).disabled=false;
+
+}
+
+
+function confirmPerson(){
+
+if(
+!selectedArea||
+!selectedPerson
+)return;
+
+
+sessionStorage.setItem(
+"mm-current-"+selectedArea,
+selectedPerson
+);
+
+
+goTo(selectedArea);
+
+}
+
+
+function currentPerson(area){
+
+return sessionStorage.getItem(
+"mm-current-"+area
+)||"";
+
+}
+
 
 function saveMeta(area){
 
@@ -1176,132 +1258,35 @@ area==="bar"
 :"kitchenDate";
 
 
-const value=
-document.getElementById(id).value;
-
-
-if(value){
-
 localStorage.setItem(
 "mm-"+area+"-date",
-value
+document.getElementById(id).value
 );
-
-}
 
 
 loadArea(area);
 
 }
 
-
-/* TURNO */
-
-function setTurn(area,value){
-
-localStorage.setItem(
-"mm-"+area+"-"+getDate(area)+"-turn",
-value
-);
-
-loadArea(area);
-
-}
-
-
-function getTurn(area){
-
-return localStorage.getItem(
-"mm-"+area+"-"+getDate(area)+"-turn"
-)||"";
-
-}
-
-
-/* REGISTROS */
-
-function getRecords(
-area,
-type,
-index
-){
-
-return JSON.parse(
-
-localStorage.getItem(
-peopleKey(area,type,index)
-)||"[]"
-
-);
-
-}
-
-
-function saveRecords(
-area,
-type,
-index,
-records
-){
-
-localStorage.setItem(
-
-peopleKey(
-area,
-type,
-index
-),
-
-JSON.stringify(records)
-
-);
-
-}
-
-
-/* HORA */
-
-function currentTime(){
-
-return new Intl.DateTimeFormat(
-"es-MX",
-{
-hour:"numeric",
-minute:"2-digit",
-hour12:true
-}
-).format(new Date());
-
-}
-
-
-/* TAREAS */
 
 function renderTasks(
 area,
 type,
 items,
-containerId
+id
 ){
 
-const container=
-document.getElementById(containerId);
+const box=
+document.getElementById(id);
 
-container.innerHTML="";
+
+box.innerHTML="";
 
 
 items.forEach(
 function(item,index){
 
-const key=
-taskKey(
-area,
-type,
-index
-);
-
-
-const records=
+const r=
 getRecords(
 area,
 type,
@@ -1309,33 +1294,26 @@ index
 );
 
 
-const completed=
-records.length>0;
+const done=
+r.length>0;
 
 
-const note=
-localStorage.getItem(
-key+"-note"
-)||"";
-
-
-const task=
+const el=
 document.createElement("div");
 
 
-task.className=
-"task";
+el.className="task";
 
 
-task.innerHTML=`
+el.innerHTML=`
 
 <div class="task-row">
 
 <div class="check ${
-completed?"done":""
+done?"done":""
 }">
 
-${completed?"✓":""}
+${done?"✓":""}
 
 </div>
 
@@ -1348,59 +1326,47 @@ ${escapeHtml(item)}
 </div>
 
 
-<div class="people-label">
-
-👆 Toca el nombre cuando realice esta actividad:
-
-</div>
-
-
-<div class="people">
-
-${
-PEOPLE[area]
-.map(function(person){
-
-const already=
-records.some(
-function(record){
-
-return record.name===person;
-
-});
-
-
-return`
-
 <button
-class="person ${
-already?"selected":""
+class="record-button ${
+r.some(
+function(x){
+
+return x.name===
+currentPerson(area);
+
+}
+)
+?"done":""
 }"
-data-person="${escapeHtml(person)}"
 >
 
-${escapeHtml(person)}
+${
+r.some(
+function(x){
 
-</button>
+return x.name===
+currentPerson(area);
 
-`;
-
-})
-.join("")
+}
+)
+?
+"✓ Actividad registrada"
+:
+"REGISTRAR ACTIVIDAD"
 }
 
-</div>
+</button>
 
 
 <div class="activity-log">
 
 ${
-records.length
+r.length
 
 ?
 
-records.map(
-function(record){
+r.map(
+function(x){
 
 return`
 
@@ -1409,20 +1375,21 @@ return`
 <span>
 👤
 <strong>
-${escapeHtml(record.name)}
+${escapeHtml(x.name)}
 </strong>
 </span>
 
 <span>
 🕐
-${escapeHtml(record.time)}
+${escapeHtml(x.time)}
 </span>
 
 </div>
 
 `;
 
-})
+}
+)
 .join("")
 
 :
@@ -1431,7 +1398,7 @@ ${escapeHtml(record.time)}
 
 <div class="activity-empty">
 
-Aún no se ha registrado esta actividad.
+Aún no hay registros.
 
 </div>
 
@@ -1441,25 +1408,23 @@ Aún no se ha registrado esta actividad.
 
 </div>
 
-
-<input
-class="note"
-placeholder="Observaciones (opcional)"
-value="${escapeHtml(note)}"
->
-
 `;
 
 
-/* BOTONES DE PERSONAS */
-
-task
-.querySelectorAll(".person")
-.forEach(function(button){
-
-button.addEventListener(
-"click",
+el
+.querySelector(
+".record-button"
+)
+.onclick=
 function(){
+
+const person=
+currentPerson(area);
+
+
+if(!person)
+return;
+
 
 let records=
 getRecords(
@@ -1469,41 +1434,34 @@ index
 );
 
 
-const person=
-button.dataset.person;
+const exists=
+records.some(
+function(x){
+
+return x.name===person;
+
+}
+);
 
 
-const existing=
-records.find(
-function(record){
-
-return record.name===person;
-
-});
-
-
-if(existing){
-
-/* Quitar registro */
+if(exists){
 
 records=
 records.filter(
-function(record){
+function(x){
 
-return record.name!==person;
+return x.name!==person;
 
 }
 );
 
 }else{
 
-/* Registrar persona + hora */
-
 records.push({
 
 name:person,
 
-time:currentTime(),
+time:now(),
 
 timestamp:Date.now()
 
@@ -1520,61 +1478,25 @@ records
 );
 
 
-if(records.length){
-
-localStorage.setItem(
-key,
-"completed"
-);
-
-}else{
-
-localStorage.removeItem(
-key
-);
-
-}
-
-
 loadArea(area);
 
-}
-);
-
-});
+};
 
 
-/* OBSERVACIÓN */
-
-task
-.querySelector(".note")
-.addEventListener(
-"input",
-function(event){
-
-localStorage.setItem(
-key+"-note",
-event.target.value
-);
-
-}
-);
-
-
-container.appendChild(task);
+box.appendChild(el);
 
 });
 
 }
 
 
-/* CONJUNTO DE TAREAS */
+function getSets(area){
 
-function getTaskSets(area){
+return area==="kitchen"
 
-if(area==="kitchen"){
+?
 
-return[
+[
 
 {
 type:"daily",
@@ -1591,12 +1513,11 @@ type:"scheduled",
 items:TASKS.kitchen.scheduled
 }
 
-];
+]
 
-}
+:
 
-
-return[
+[
 
 {
 type:"daily",
@@ -1613,12 +1534,7 @@ items:TASKS.bar.scheduled
 }
 
 
-/* ESTADÍSTICAS */
-
-function getStats(area){
-
-const sets=
-getTaskSets(area);
+function stats(area){
 
 let total=0;
 
@@ -1627,24 +1543,23 @@ let done=0;
 let pending=[];
 
 
-sets.forEach(
-function(set){
+getSets(area)
+.forEach(
+function(s){
 
-set.items.forEach(
-function(item,index){
+s.items.forEach(
+function(item,i){
 
 total++;
 
 
-const records=
+if(
 getRecords(
 area,
-set.type,
-index
-);
-
-
-if(records.length){
+s.type,
+i
+).length
+){
 
 done++;
 
@@ -1667,30 +1582,32 @@ done:done,
 
 pending:pending,
 
-percent:
+pct:
 total
-?Math.round(
+?
+Math.round(
 done/total*100
 )
-:0
+:
+0
 
 };
 
 }
 
 
-/* RESUMEN */
-
 function renderSummary(area){
 
-const stats=
-getStats(area);
+const s=
+stats(area);
 
 
 const id=
-area==="bar"
-?"barSummary"
-:"kitchenSummary";
+area==="kitchen"
+?
+"kitchenSummary"
+:
+"barSummary";
 
 
 document.getElementById(id).innerHTML=`
@@ -1700,7 +1617,7 @@ document.getElementById(id).innerHTML=`
 <div class="stat">
 
 <strong>
-${stats.done}
+${s.done}
 </strong>
 
 <span>
@@ -1713,7 +1630,7 @@ Completadas
 <div class="stat">
 
 <strong>
-${stats.pending.length}
+${s.pending.length}
 </strong>
 
 <span>
@@ -1726,7 +1643,7 @@ Pendientes
 <div class="stat">
 
 <strong>
-${stats.percent}%
+${s.pct}%
 </strong>
 
 <span>
@@ -1742,7 +1659,7 @@ Avance
 
 <div
 class="progress-bar"
-style="width:${stats.percent}%"
+style="width:${s.pct}%"
 ></div>
 
 </div>
@@ -1750,9 +1667,9 @@ style="width:${stats.percent}%"
 
 <div class="progress-text">
 
-${stats.done}
+${s.done}
 de
-${stats.total}
+${s.total}
 actividades completadas
 
 </div>
@@ -1760,21 +1677,40 @@ actividades completadas
 `;
 
 
-const pendingId=
-area==="bar"
-?"barPending"
-:"kitchenPending";
-
-
-const container=
 document.getElementById(
-pendingId
-);
+area==="kitchen"
+?
+"kitchenPending"
+:
+"barPending"
+).innerHTML=
 
+s.pending.length
 
-if(!stats.pending.length){
+?
 
-container.innerHTML=`
+s.pending
+.map(
+function(x){
+
+return`
+
+<div class="pending">
+
+⚠️
+${escapeHtml(x)}
+
+</div>
+
+`;
+
+}
+)
+.join("")
+
+:
+
+`
 
 <div class="empty">
 
@@ -1785,57 +1721,42 @@ container.innerHTML=`
 
 `;
 
-}else{
 
-container.innerHTML=
-stats.pending
-.map(function(item){
+document.getElementById(
+area+"CurrentPerson"
+).innerHTML=
 
-return`
-
-<div class="pending">
-
-⚠️ ${escapeHtml(item)}
-
-</div>
-
+`
+<strong>
+${escapeHtml(
+currentPerson(area)||
+"Sin seleccionar"
+)}
+</strong>
 `;
 
-})
-.join("");
-
-}
-
 }
 
 
-/* CIERRE */
-
-function closeKey(area){
+function closeKey(a){
 
 return "mm-"+
-area+"-"+
-getDate(area)+
+a+"-"+
+getDate(a)+
 "-close";
 
 }
 
 
-function setClose(area,value){
-
-const stats=
-getStats(area);
-
+function setClose(a,v){
 
 if(
-value==="listo" &&
-stats.pending.length
+v==="listo"&&
+stats(a).pending.length
 ){
 
 alert(
-"Todavía hay actividades pendientes. "+
-"Registra las actividades realizadas o selecciona "+
-"“Quedaron pendientes”."
+"Todavía hay actividades pendientes."
 );
 
 return;
@@ -1844,162 +1765,113 @@ return;
 
 
 localStorage.setItem(
-closeKey(area),
-value
+closeKey(a),
+v
 );
 
 
-loadClose(area);
+loadClose(a);
 
 }
 
 
-function saveCloseNote(area){
-
-const note=
-document.getElementById(
-area+"CloseNote"
-).value;
-
+function saveCloseNote(a){
 
 localStorage.setItem(
-closeKey(area)+"-note",
-note
+closeKey(a)+"-note",
+document.getElementById(
+a+"CloseNote"
+).value
 );
 
 }
 
 
-function loadClose(area){
+function loadClose(a){
 
-const value=
+const v=
 localStorage.getItem(
-closeKey(area)
+closeKey(a)
 )||"";
 
 
 document
 .querySelectorAll(
-`.close-button[data-area="${area}"]`
+`[data-area="${a}"][data-close]`
 )
-.forEach(function(button){
+.forEach(
+function(b){
 
-button.classList.toggle(
+b.classList.toggle(
 "selected",
-button.dataset.close===value
+b.dataset.close===v
 );
 
-});
+}
+);
 
 
-const note=
 document.getElementById(
-area+"CloseNote"
-);
-
-
-if(note){
-
-note.value=
+a+"CloseNote"
+).value=
 localStorage.getItem(
-closeKey(area)+"-note"
+closeKey(a)+"-note"
 )||"";
 
 }
 
-}
+
+function saveClose(a){
+
+saveCloseNote(a);
 
 
-function saveClose(area){
-
-saveCloseNote(area);
-
-
-const saved=
+const x=
 document.getElementById(
-area+"Saved"
+a+"Saved"
 );
 
 
-saved.classList.add("show");
+x.classList.add("show");
 
 
 setTimeout(
 function(){
 
-saved.classList.remove("show");
+x.classList.remove("show");
 
 },
-2500
+2200
 );
 
 }
 
 
-/* REPORTE */
+function report(a){
 
-function formatDateEs(value){
-
-const parts=
-value.split("-");
+const s=
+stats(a);
 
 
-if(parts.length!==3){
-
-return value;
-
-}
+const data=[];
 
 
-return`${parts[2]}/${parts[1]}/${parts[0]}`;
-
-}
-
-
-function getAllTaskData(area){
-
-const result=[];
-
-
-getTaskSets(area)
+getSets(a)
 .forEach(
 function(set){
 
 set.items.forEach(
-function(item,index){
+function(item,i){
 
-const key=
-taskKey(
-area,
+data.push({
+
+item:item,
+
+r:getRecords(
+a,
 set.type,
-index
-);
-
-
-const records=
-getRecords(
-area,
-set.type,
-index
-);
-
-
-const note=
-localStorage.getItem(
-key+"-note"
-)||"";
-
-
-result.push({
-
-name:item,
-
-completed:
-records.length>0,
-
-records:records,
-
-note:note
+i
+)
 
 });
 
@@ -2008,340 +1880,163 @@ note:note
 });
 
 
-return result;
-
-}
-
-
-/* REPORTE WHATSAPP */
-
-function buildWhatsAppReport(area){
-
-const date=
-getDate(area);
-
-
-const turn=
-getTurn(area)
-||
-"Sin turno seleccionado";
-
-
-const data=
-getAllTaskData(area);
-
-
-const areaName=
-area==="kitchen"
-?"COCINA"
-:"BARRA";
-
-
-const icon=
-area==="kitchen"
-?"👩🏻‍🍳"
-:"☕";
-
-
-const peopleWorked=[
+const people=[
 
 ...new Set(
 
 data.flatMap(
-function(item){
+function(x){
 
-return item.records.map(
-function(record){
+return x.r.map(
+function(r){
 
-return record.name;
-
-});
+return r.name;
 
 }
+);
 
+}
 )
 
 )
 ];
 
 
-const completed=
+const done=
 data.filter(
-function(item){
+function(x){
 
-return item.completed;
+return x.r.length;
 
-});
+}
+);
 
 
-const pending=
+const pend=
 data.filter(
-function(item){
+function(x){
 
-return !item.completed;
+return !x.r.length;
 
-});
+}
+);
 
 
-const percent=
-data.length
+let t=
+
+`${
+a==="kitchen"
+?"👩🏻‍🍳"
+:"☕"
+} *CIERRE — ${
+a==="kitchen"
+?"COCINA"
+:"BARRA"
+}*\n`+
+
+`📅 ${
+getDate(a)
+.split("-")
+.reverse()
+.join("/")
+}\n`+
+
+`👤 ${
+people.length
 ?
-Math.round(
-completed.length/
-data.length*
-100
-)
-:0;
+people.join(", ")
+:
+"Sin registros"
+}\n\n`;
 
 
-let text=
-`${icon} *CIERRE DE TURNO — ${areaName}*\n`+
-`📅 Fecha: ${formatDateEs(date)}\n`+
-`🕐 Turno: ${turn}\n\n`;
+t+="✅ *REALIZADO*\n";
 
 
-text+=
-`👥 *PERSONAL QUE PARTICIPÓ*\n`;
+done.forEach(
+function(x){
 
+t+=
+`• ${x.item}: `+
+x.r
+.map(
+function(r){
 
-if(peopleWorked.length){
-
-peopleWorked.forEach(
-function(name){
-
-text+=`• ${name}\n`;
-
-}
-);
-
-}else{
-
-text+=
-`• No se registró personal\n`;
-
-}
-
-
-text+=
-`\n✅ *ACTIVIDADES REALIZADAS*\n`;
-
-
-if(completed.length){
-
-completed.forEach(
-function(item){
-
-text+=
-`\n• *${item.name}*\n`;
-
-
-item.records
-.slice()
-.sort(
-function(a,b){
-
-return(
-(a.timestamp||0)-
-(b.timestamp||0)
-);
+return`${r.name} ${r.time}`;
 
 }
 )
-.forEach(
-function(record){
-
-text+=
-`  → ${record.name} — ${record.time}\n`;
+.join(" · ")+
+"\n";
 
 }
 );
 
 
-if(item.note.trim()){
-
-text+=
-`  📝 ${item.note.trim()}\n`;
-
-}
-
-});
-
-}else{
-
-text+=
-`• Ninguna actividad registrada como completada.\n`;
-
-}
+t+="\n⚠️ *PENDIENTE*\n";
 
 
-text+=
-`\n⚠️ *PENDIENTES*\n`;
+t+=
+pend.length
 
+?
 
-if(pending.length){
+pend
+.map(
+function(x){
 
-pending.forEach(
-function(item){
-
-text+=
-`• ${item.name}\n`;
+return"• "+x.item;
 
 }
-);
+)
+.join("\n")
 
-}else{
+:
 
-text+=
-`• No quedaron pendientes. 🎉\n`;
+"• Ninguna 🎉";
+
+
+t+=
+`\n\n📊 *AVANCE: ${s.pct}%*`;
+
+
+return t;
 
 }
 
 
-text+=
-`\n📊 *AVANCE: ${percent}%*\n`+
-`✅ ${completed.length} de ${data.length} actividades completadas\n`;
-
-
-const closeValue=
-localStorage.getItem(
-closeKey(area)
-)||"";
-
-
-const closeNote=
-localStorage.getItem(
-closeKey(area)+"-note"
-)||"";
-
-
-text+=
-`\n🏁 *CIERRE*\n`;
-
-
-if(closeValue==="listo"){
-
-text+=
-`🟢 Todo listo\n`;
-
-}else if(
-closeValue==="pendientes"
-){
-
-text+=
-`🟡 Quedaron pendientes\n`;
-
-}else{
-
-text+=
-`⚪ Cierre no seleccionado\n`;
-
-}
-
-
-if(closeNote.trim()){
-
-text+=
-`\n📝 *OBSERVACIONES DEL TURNO*\n`+
-`${closeNote.trim()}\n`;
-
-}
-
-
-text+=
-`\n🥐 Masa Madre · Boulangerie`;
-
-
-return text;
-
-}
-
-
-/* WHATSAPP NORMAL */
-
-function sendWhatsApp(area){
-
-const report=
-buildWhatsAppReport(area);
-
-
-if(
-navigator.clipboard &&
-navigator.clipboard.writeText
-){
-
-navigator.clipboard
-.writeText(report)
-.then(function(){
+function sendWhatsApp(a){
 
 window.open(
 "https://wa.me/?text="+
-encodeURIComponent(report),
-"_blank"
-);
-
-})
-.catch(function(){
-
-window.open(
-"https://wa.me/?text="+
-encodeURIComponent(report),
-"_blank"
-);
-
-});
-
-}else{
-
-window.open(
-"https://wa.me/?text="+
-encodeURIComponent(report),
+encodeURIComponent(
+report(a)
+),
 "_blank"
 );
 
 }
 
-}
 
-
-/* CARGAR ÁREA */
-
-function loadArea(area){
-
-const dateId=
-area==="bar"
-?"barDate"
-:"kitchenDate";
-
+function loadArea(a){
 
 document.getElementById(
-dateId
+a==="bar"
+?
+"barDate"
+:
+"kitchenDate"
 ).value=
-getDate(area);
+getDate(a);
 
 
-const selectedTurn=
-getTurn(area);
+renderSummary(a);
 
 
-document
-.querySelectorAll(
-`.turn[data-area="${area}"]`
-)
-.forEach(function(button){
-
-button.classList.toggle(
-"selected",
-button.dataset.turn===
-selectedTurn
-);
-
-});
-
-
-if(area==="kitchen"){
+if(a==="kitchen"){
 
 renderTasks(
-area,
+a,
 "daily",
 TASKS.kitchen.daily,
 "kitchenDaily"
@@ -2349,7 +2044,7 @@ TASKS.kitchen.daily,
 
 
 renderTasks(
-area,
+a,
 "deep",
 TASKS.kitchen.deep,
 "kitchenDeep"
@@ -2357,7 +2052,7 @@ TASKS.kitchen.deep,
 
 
 renderTasks(
-area,
+a,
 "scheduled",
 TASKS.kitchen.scheduled,
 "kitchenScheduled"
@@ -2366,7 +2061,7 @@ TASKS.kitchen.scheduled,
 }else{
 
 renderTasks(
-area,
+a,
 "daily",
 TASKS.bar.daily,
 "barTasks"
@@ -2374,7 +2069,7 @@ TASKS.bar.daily,
 
 
 renderTasks(
-area,
+a,
 "scheduled",
 TASKS.bar.scheduled,
 "barScheduled"
@@ -2383,33 +2078,10 @@ TASKS.bar.scheduled,
 }
 
 
-renderSummary(area);
-
-loadClose(area);
+loadClose(a);
 
 }
 
-
-/* SEGURIDAD */
-
-function escapeHtml(text){
-
-return String(text)
-
-.replace(/&/g,"&amp;")
-
-.replace(/</g,"&lt;")
-
-.replace(/>/g,"&gt;")
-
-.replace(/"/g,"&quot;")
-
-.replace(/'/g,"&#039;");
-
-}
-
-
-/* INICIO */
 
 document.addEventListener(
 "DOMContentLoaded",
