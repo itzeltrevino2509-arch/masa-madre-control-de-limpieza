@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#173B63">
+
+  <title>Masa Madre · Control de Limpieza</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f5efe3;
+      color: #173B63;
+    }
+
+    .app {
+      min-height: 100vh;
+      max-width: 480px;
+      margin: auto;
+      background: #f9f5ec;
+    }
+
+    header {
+      background: #173B63;
+      color: #f9f5ec;
+      padding: 38px 24px 32px;
+      text-align: center;
+      border-bottom: 5px solid #8d2f2f;
+    }
+
+    .brand {
+      font-size: 13px;
+      letter-spacing: 5px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 31px;
+      letter-spacing: 1px;
+      line-height: 1.1;
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      color: #e7d8bd;
+      font-size: 15px;
+      letter-spacing: 1px;
+    }
+
+    main {
+      padding: 28px 20px 40px;
+    }
+
+    .welcome {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .welcome h2 {
+      margin: 0 0 8px;
+      font-size: 25px;
+    }
+
+    .welcome p {
+      margin: 0;
+      color: #6c6255;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    .area-card {
+      width: 100%;
+      border: none;
+      border-radius: 18px;
+      padding: 27px 20px;
+      margin-bottom: 18px;
+      text-align: left;
+      cursor: pointer;
+      font-family: Georgia, "Times New Roman", serif;
+      box-shadow: 0 5px 16px rgba(23, 59, 99, 0.12);
+      transition: transform 0.15s ease;
+    }
+
+    .area-card:active {
+      transform: scale(0.98);
+    }
+
+    .kitchen {
+      background: #173B63;
+      color: white;
+    }
+
+    .bar {
+      background: #fffaf0;
+      color: #173B63;
+      border: 2px solid #173B63;
+    }
+
+    .icon {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    .area-title {
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .area-description {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      opacity: 0.85;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: #8d2f2f;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <header>
+      <div class="brand">MASA MADRE</div>
+
+      <h1>CONTROL DE<br>LIMPIEZA</h1>
+
+      <div class="subtitle">BOULANGERIE</div>
+    </header>
+
+    <main>
+
+      <div class="welcome">
+        <h2>Selecciona tu área</h2>
+        <p>Elige dónde realizas tus actividades.</p>
+      </div>
+
+      <button class="area-card kitchen">
+        <div class="icon">👨🏻‍🍳</div>
+        <div class="area-title">COCINA</div>
+        <div class="area-description">
+          Actividades de limpieza y cierre de cocina
+        </div>
+      </button>
+
+      <button class="area-card bar">
+        <div class="icon">☕</div>
+        <div class="area-title">BARISTA</div>
+        <div class="area-description">
+          Actividades de limpieza y cierre de barra
+        </div>
+      </button>
+
+    </main>
+
+    <div class="footer">
+      ARTESANAL · EUROPEO · MASA MADRE
+    </div>
+
+  </div>
+
+</body>
+</html>
