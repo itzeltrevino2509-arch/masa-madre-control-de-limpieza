@@ -1,6 +1,72 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Masa Madre · Control</title><style>
-*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f8f1e7;color:#403229}button,input,textarea{font:inherit}.screen{display:none;min-height:100vh}.active{display:block}#cover{min-height:100vh;background:#173b63;color:#fff;display:grid;place-items:center;text-align:center;padding:25px}.cover{max-width:650px}.croissant{font-size:70px}.cover h1{font:clamp(42px,11vw,78px)/1 Georgia,serif;letter-spacing:8px;margin:15px 0}.red{color:#b84b40;font:bold 22px Georgia,serif;letter-spacing:7px}.line{width:100px;height:3px;background:#c7a66a;margin:28px auto}.cover h2{font:32px Georgia,serif}.cover p{font-size:17px;line-height:1.5}.start{margin-top:25px;padding:16px 35px;border:2px solid #c7a66a;border-radius:40px;background:#fff8ed;color:#173b63;font-weight:bold}.inner{min-height:100vh;padding:25px 17px 45px;background:linear-gradient(#f8f1e7,#fff9f2)}.wrap{max-width:820px;margin:auto}.welcome{text-align:center;margin:25px}.welcome h1,.title{color:#173b63;font:40px Georgia,serif;margin:0}.welcome p,.desc{color:#786a60}.areas{display:grid;gap:18px}.area{padding:28px;border:1px solid #dcc9b5;border-radius:28px;text-align:left}.bar{background:#f5e5d5}.kitchen{background:#e8f0f7}.area h2{font:32px Georgia,serif;color:#173b63}.bar h2{color:#76533d}.enter{color:#a33f35;font-weight:bold}.back{padding:9px 14px;border:1px solid #d8c5b1;border-radius:12px;background:#fff;color:#173b63;margin-bottom:15px}.box{background:#fffdf9;border:1px solid #e0cfbd;border-radius:20px;padding:16px;margin:16px 0}.box h2{margin:0 0 7px;color:#a33f35;font:21px Georgia,serif}.small{font-size:12px;color:#85756a}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field label{display:block;font-size:12px;font-weight:bold;margin-bottom:5px}.field input,.note,.close-note,.staff-input{width:100%;padding:10px;border:1px solid #ddcdb9;border-radius:11px;background:#fff}.turns,.close,.staff-add{display:flex;gap:8px}.turn,.close button,.staff-add button{flex:1;padding:10px;border:1px solid #d9c5b2;border-radius:11px;background:#fff8f0;color:#604a3a}.selected,.identity-person.active{background:#173b63!important;color:#fff!important;border-color:#173b63!important}.staff-add{margin-top:8px}.staff-input{flex:1}.staff-add button{background:#173b63;color:#fff}.staff-list,.identity-people,.people{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}.staff-chip,.identity-person,.person{padding:8px 11px;border:1px solid #d9c5b2;border-radius:999px;background:#fff8f0;color:#604a3a;font-size:12px}.staff-remove{border:0;background:none;color:#a33f35;font-weight:bold}.task{background:#fff;border:1px solid #e7d9cb;border-radius:15px;padding:13px;margin-top:9px}.row{display:flex;align-items:center;gap:10px}.check{width:28px;height:28px;border:2px solid #b49376;border-radius:50%;display:grid;place-items:center}.done{background:#173b63;color:#fff;border-color:#173b63}.label{margin-top:9px;font-size:12px;color:#8a7769}.person.on{background:#a33f35;color:#fff}.quick{width:100%;margin-top:8px;padding:10px;border:0;border-radius:11px;background:#a33f35;color:#fff;font-weight:bold}.log{border-top:1px dashed #e1d3c4;margin-top:9px;padding-top:7px;font-size:12px}.entry{display:flex;justify-content:space-between;background:#f8f1e7;padding:6px 8px;margin-top:4px;border-radius:8px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{text-align:center;background:#fff;border:1px solid #e2d4c5;border-radius:13px;padding:10px}.stat b{display:block;font-size:22px;color:#173b63}.stat span{font-size:11px;color:#806f63}.progress{height:11px;background:#eadfd2;border-radius:20px;overflow:hidden;margin-top:12px}.progress i{display:block;height:100%;background:#173b63}.pct{text-align:center;font-size:12px;color:#6f6258;margin-top:6px}.pending{padding:9px;border-left:4px solid #a33f35;background:#fff7f1;border-radius:10px;margin-top:7px;font-size:13px}.empty{padding:10px;background:#eef5ee;border-radius:10px;color:#41604a;font-size:13px}.save{width:100%;margin-top:9px;padding:13px;border:0;border-radius:12px;background:#a33f35;color:#fff;font-weight:bold}.wa{background:#218c4b}.saved{display:none;margin-top:8px;padding:9px;background:#eef5ee;color:#41604a;border-radius:10px;font-size:12px}.saved.show{display:block}.hint{margin-top:8px;padding:9px;background:#eef7f0;color:#49624f;border-radius:10px;font-size:12px}.guide{border-left:4px solid #a33f35;background:#fff;border-radius:11px;padding:11px;margin-top:8px;font-size:12px;line-height:1.45}.guide strong{display:block;color:#173b63}@media(max-width:480px){.grid{grid-template-columns:1fr}.close{flex-direction:column}}
-</style></head><body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Masa Madre · Boulangerie</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f8f1e7;color:#403229}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.screen{display:none;min-height:100vh}
+#cover{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;background:#173b63;color:#fff}
+.cover{width:min(680px,100%)}
+.croissant{font-size:72px}
+h1{font-family:Georgia,serif}
+.cover h1{font-size:clamp(42px,11vw,78px);letter-spacing:8px;margin:16px 0}
+.red{color:#b84b40;font:bold 22px Georgia,serif;letter-spacing:7px}
+.line{width:100px;height:3px;background:#c7a66a;margin:28px auto}
+.cover h2{font:32px Georgia,serif}
+.cover p{font-size:17px;line-height:1.5;color:#f6eee3}
+.start{margin-top:26px;padding:16px 36px;border:2px solid #c7a66a;border-radius:40px;background:#fff8ed;color:#173b63;font-weight:700;letter-spacing:2px}
+.inner{min-height:100vh;padding:28px 17px 50px;background:linear-gradient(#f8f1e7,#fff9f2)}
+.wrap{max-width:820px;margin:auto}
+.welcome{text-align:center;margin:25px 0 30px}
+.welcome h1{color:#173b63;font-size:48px;margin:0}
+.welcome p,.desc{color:#786a60}
+.areas{display:grid;gap:18px}
+.area{display:block;width:100%;padding:30px;border:1px solid #dcc9b5;border-radius:28px;text-align:left;box-shadow:0 10px 25px #4a34261a}
+.bar{background:#f5e5d5}.kitchen{background:#e7f0f7}
+.area-icon{font-size:52px}.area h2{font:32px Georgia,serif;color:#173b63;margin:12px 0 6px}.bar h2{color:#76533d}
+.area p{color:#75675d}.enter{color:#a33f35;font-weight:700}
+.back{padding:10px 15px;border:1px solid #d8c5b1;border-radius:12px;background:#fff;color:#173b63;margin-bottom:16px}
+.title{font-size:40px;color:#173b63;margin:0}.desc{margin-top:6px}
+.box{background:#fffdf9;border:1px solid #e0cfbd;border-radius:21px;padding:17px;margin:17px 0;box-shadow:0 6px 18px #4b342510}
+.box h2{margin:0 0 11px;color:#a33f35;font:21px Georgia,serif}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:block;font-size:12px;font-weight:700;color:#806f63;margin-bottom:5px}
+input,textarea{width:100%;padding:10px;border:1px solid #ddcdb9;border-radius:11px;background:#fff}
+.turns,.close{display:flex;gap:8px}
+.turn,.close button{flex:1;padding:10px;border:1px solid #d9c5b2;border-radius:11px;background:#fff8f0;color:#604a3a}
+.selected{background:#173b63!important;color:#fff!important;border-color:#173b63!important}
+.task{background:#fff;border:1px solid #e7d9cb;border-radius:15px;padding:13px;margin-top:9px}
+.task-row{display:flex;align-items:center;gap:10px}
+.check{width:28px;height:28px;min-width:28px;border:2px solid #b49376;border-radius:50%;display:grid;place-items:center}
+.check.done{background:#173b63;color:#fff;border-color:#173b63}
+.task-name{font-weight:650}
+.people-label{margin-top:9px;font-size:12px;color:#8a7769}
+.people{display:flex;flex-wrap:wrap;gap:7px;margin-top:7px}
+.person{padding:7px 10px;border:1px solid #d9c5b2;border-radius:999px;background:#fff8f0;color:#604a3a;font-size:12px}
+.person.selected{background:#a33f35;color:#fff;border-color:#a33f35}
+.log{border-top:1px dashed #e1d3c4;margin-top:9px;padding-top:7px}
+.entry{display:flex;justify-content:space-between;gap:8px;padding:6px 8px;margin-top:4px;border-radius:8px;background:#f8f1e7;font-size:12px}
+.note{margin-top:8px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:#fff;border:1px solid #e2d4c5;border-radius:13px;padding:10px;text-align:center}
+.stat strong{display:block;font-size:22px;color:#173b63}.stat span{font-size:11px;color:#806f63}
+.progress{height:11px;background:#eadfd2;border-radius:20px;overflow:hidden;margin-top:12px}.progress-bar{height:100%;background:#173b63}
+.progress-text{text-align:center;font-size:12px;color:#6f6258;margin-top:6px}
+.pending{padding:9px;border-left:4px solid #a33f35;background:#fff7f1;border-radius:10px;margin-top:7px;font-size:13px}
+.empty{padding:10px;background:#eef5ee;border-radius:10px;color:#41604a;font-size:13px}
+.save{width:100%;margin-top:9px;padding:13px;border:0;border-radius:12px;background:#a33f35;color:#fff;font-weight:700}
+.whatsapp{background:#218c4b}
+.saved{display:none;margin-top:8px;padding:9px;background:#eef5ee;color:#41604a;border-radius:10px;font-size:12px}
+.saved.show{display:block}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.close{flex-direction:column}}
+</style>
+</head>
+<body>
 
 <section id="cover">
 <div class="cover">
@@ -10,7 +76,7 @@
 <div class="line"></div>
 <h2>CONTROL DE LIMPIEZA</h2>
 <p>El cuidado de cada detalle también es parte de nuestro trabajo.</p>
-<button class="start" onclick="go('home')">COMENZAR →</button>
+<button class="start" onclick="show('home')">COMENZAR →</button>
 </div>
 </section>
 
@@ -23,102 +89,113 @@
 
 <div class="areas">
 
-<button class="area bar" onclick="go('bar')">
-<div>☕</div>
+<button class="area bar" onclick="show('bar')">
+<div class="area-icon">☕</div>
 <h2>BARRA Y CAFETERÍA</h2>
 <p>Preparación · Orden · Limpieza</p>
 <span class="enter">ENTRAR AL CONTROL →</span>
 </button>
 
-<button class="area kitchen" onclick="go('kitchen')">
-<div>👩🏻‍🍳</div>
+<button class="area kitchen" onclick="show('kitchen')">
+<div class="area-icon">👩🏻‍🍳</div>
 <h2>COCINA</h2>
 <p>Limpieza · Organización · Cuidado</p>
 <span class="enter">ENTRAR AL CONTROL →</span>
 </button>
 
-</div></div></div>
+</div>
+</div></div>
 </section>
 
 <section id="bar" class="screen">
 <div class="inner"><div class="wrap">
 
-<button class="back" onclick="go('home')">← Regresar</button>
+<button class="back" onclick="show('home')">← Regresar</button>
 <h1 class="title">☕ Barra y Cafetería</h1>
 <p class="desc">Control diario de preparación, orden y limpieza.</p>
 
 <div class="box">
 <h2>📅 Día y turno</h2>
+
 <div class="grid">
 
-<div class="field">
+<div>
 <label>Fecha</label>
 <input id="barDate" type="date" onchange="meta('bar')">
 </div>
 
 <div>
 <label>Turno</label>
+
 <div class="turns">
-<button class="turn" data-a="bar" data-t="Mañana" onclick="turn('bar','Mañana')">☀️ Mañana</button>
-<button class="turn" data-a="bar" data-t="Tarde" onclick="turn('bar','Tarde')">🌙 Tarde</button>
-</div>
-</div>
+
+<button class="turn" data-area="bar" data-turn="Mañana" onclick="setTurn('bar','Mañana')">
+☀️ Mañana
+</button>
+
+<button class="turn" data-area="bar" data-turn="Tarde" onclick="setTurn('bar','Tarde')">
+🌙 Tarde
+</button>
 
 </div>
 </div>
 
-<div class="box">
-<h2>👥 Personal</h2>
-<div class="staff-add">
-<input id="barInput" class="staff-input" placeholder="Nombre..." maxlength="40">
-<button onclick="add('bar')">＋ Agregar</button>
 </div>
-<div id="barStaff" class="staff-list"></div>
 </div>
 
 <div class="box">
-<h2>👤 ¿Quién eres?</h2>
-<div id="barWho" class="identity-people"></div>
-</div>
-
-<div class="box">
-<h2>📊 Resumen</h2>
-<div id="barStats"></div>
+<h2>📊 Resumen del turno</h2>
+<div id="barSummary"></div>
 </div>
 
 <div class="box">
 <h2>☕ Actividades diarias</h2>
-<div id="barDaily"></div>
+<div id="barTasks"></div>
 </div>
 
 <div class="box">
 <h2>📅 Actividades programadas</h2>
-<div id="barSched"></div>
+<div id="barScheduled"></div>
 </div>
 
 <div class="box">
 <h2>⚠️ Pendientes</h2>
-<div id="barPend"></div>
+<div id="barPending"></div>
 </div>
 
 <div class="box">
-<h2>🏁 Cierre</h2>
+
+<h2>🏁 Cierre del turno</h2>
 
 <div class="close">
-<button class="closebtn" data-a="bar" data-v="listo" onclick="closeTurn('bar','listo')">🟢 Todo listo</button>
-<button class="closebtn" data-a="bar" data-v="pendientes" onclick="closeTurn('bar','pendientes')">🟡 Quedaron pendientes</button>
+
+<button data-area="bar" data-close="listo" onclick="setClose('bar','listo')">
+🟢 Todo listo
+</button>
+
+<button data-area="bar" data-close="pendientes" onclick="setClose('bar','pendientes')">
+🟡 Quedaron pendientes
+</button>
+
 </div>
 
-<textarea id="barNote" class="close-note" placeholder="Observaciones..." oninput="note('bar')"></textarea>
+<textarea
+id="barNote"
+class="note"
+placeholder="Observaciones del turno..."
+oninput="saveNote('bar')"
+></textarea>
 
-<button class="save" onclick="saveClose('bar')">GUARDAR CIERRE</button>
+<button class="save" onclick="saveClose('bar')">
+GUARDAR CIERRE DEL TURNO
+</button>
 
-<button class="save wa" onclick="whatsapp('bar')">📲 GENERAR REPORTE PARA WHATSAPP</button>
+<button class="save whatsapp" onclick="whatsapp('bar')">
+📲 GENERAR REPORTE PARA WHATSAPP
+</button>
 
-<div id="barSaved" class="saved">✓ Cierre guardado.</div>
-
-<div class="hint">
-💬 El reporte se prepara para WhatsApp. Tú eliges dónde pegarlo.
+<div id="barSaved" class="saved">
+✓ Cierre guardado correctamente.
 </div>
 
 </div>
@@ -128,50 +205,51 @@
 <section id="kitchen" class="screen">
 <div class="inner"><div class="wrap">
 
-<button class="back" onclick="go('home')">← Regresar</button>
-<h1 class="title">👩🏻‍🍳 Cocina</h1>
-<p class="desc">Control diario de limpieza, organización y cuidado del área.</p>
+<button class="back" onclick="show('home')">
+← Regresar
+</button>
+
+<h1 class="title">
+👩🏻‍🍳 Cocina
+</h1>
+
+<p class="desc">
+Control diario de limpieza, organización y cuidado del área.
+</p>
 
 <div class="box">
+
 <h2>📅 Día y turno</h2>
 
 <div class="grid">
 
-<div class="field">
+<div>
 <label>Fecha</label>
 <input id="kitchenDate" type="date" onchange="meta('kitchen')">
 </div>
 
 <div>
 <label>Turno</label>
+
 <div class="turns">
-<button class="turn" data-a="kitchen" data-t="Mañana" onclick="turn('kitchen','Mañana')">☀️ Mañana</button>
-<button class="turn" data-a="kitchen" data-t="Tarde" onclick="turn('kitchen','Tarde')">🌙 Tarde</button>
-</div>
-</div>
+
+<button class="turn" data-area="kitchen" data-turn="Mañana" onclick="setTurn('kitchen','Mañana')">
+☀️ Mañana
+</button>
+
+<button class="turn" data-area="kitchen" data-turn="Tarde" onclick="setTurn('kitchen','Tarde')">
+🌙 Tarde
+</button>
 
 </div>
 </div>
 
-<div class="box">
-<h2>👥 Personal</h2>
-
-<div class="staff-add">
-<input id="kitchenInput" class="staff-input" placeholder="Nombre..." maxlength="40">
-<button onclick="add('kitchen')">＋ Agregar</button>
 </div>
-
-<div id="kitchenStaff" class="staff-list"></div>
 </div>
 
 <div class="box">
-<h2>👤 ¿Quién eres?</h2>
-<div id="kitchenWho" class="identity-people"></div>
-</div>
-
-<div class="box">
-<h2>📊 Resumen</h2>
-<div id="kitchenStats"></div>
+<h2>📊 Resumen del turno</h2>
+<div id="kitchenSummary"></div>
 </div>
 
 <div class="box">
@@ -186,919 +264,1078 @@
 
 <div class="box">
 <h2>📅 Actividades programadas</h2>
-<div id="kitchenSched"></div>
+<div id="kitchenScheduled"></div>
 </div>
 
 <div class="box">
 <h2>⚠️ Pendientes</h2>
-<div id="kitchenPend"></div>
+<div id="kitchenPending"></div>
 </div>
 
 <div class="box">
-<h2>🏁 Cierre</h2>
+
+<h2>🏁 Cierre del turno</h2>
 
 <div class="close">
-<button class="closebtn" data-a="kitchen" data-v="listo" onclick="closeTurn('kitchen','listo')">🟢 Todo listo</button>
-<button class="closebtn" data-a="kitchen" data-v="pendientes" onclick="closeTurn('kitchen','pendientes')">🟡 Quedaron pendientes</button>
-</div>
 
-<textarea id="kitchenNote" class="close-note" placeholder="Observaciones..." oninput="note('kitchen')"></textarea>
+<button data-area="kitchen" data-close="listo" onclick="setClose('kitchen','listo')">
+🟢 Todo listo
+</button>
 
-<button class="save" onclick="saveClose('kitchen')">GUARDAR CIERRE</button>
-
-<button class="save wa" onclick="whatsapp('kitchen')">📲 GENERAR REPORTE PARA WHATSAPP</button>
-
-<div id="kitchenSaved" class="saved">✓ Cierre guardado.</div>
-
-<div class="hint">
-💬 El reporte se prepara para WhatsApp. Tú eliges dónde pegarlo.
-</div>
+<button data-area="kitchen" data-close="pendientes" onclick="setClose('kitchen','pendientes')">
+🟡 Quedaron pendientes
+</button>
 
 </div>
 
-<div class="box">
-<h2>🧼 Cosas que debemos cuidar todos</h2>
+<textarea
+id="kitchenNote"
+class="note"
+placeholder="Observaciones del turno..."
+oninput="saveNote('kitchen')"
+></textarea>
 
-<div class="guide">
-<strong>🔥 Hornos</strong>
-Ambos deben mantenerse limpios. Si algo se chorrea, se limpia en el momento.
-</div>
+<button class="save" onclick="saveClose('kitchen')">
+GUARDAR CIERRE DEL TURNO
+</button>
 
-<div class="guide">
-<strong>🔥 Plancha</strong>
-Debe quedar limpia y sin grasa acumulada. Proteger los trastes antes de usar desengrasante.
-</div>
+<button class="save whatsapp" onclick="whatsapp('kitchen')">
+📲 GENERAR REPORTE PARA WHATSAPP
+</button>
 
-<div class="guide">
-<strong>🔥 Estufa</strong>
-Debe mantenerse limpia y sin grasa ni restos de comida.
-</div>
-
-<div class="guide">
-<strong>🍲 Baños María</strong>
-Mantener limpios y revisar/cambiar el agua cuando sea necesario.
-</div>
-
-<div class="guide">
-<strong>📱 Microondas</strong>
-Si algo se chorrea, se limpia en ese momento.
-</div>
-
-<div class="guide">
-<strong>🍽️ Loza</strong>
-Los restos van a la basura, no al resumidero. Si una persona empieza y otra termina, ambas pueden registrarse.
-</div>
-
-<div class="guide">
-<strong>🗄️ Refrigeradores</strong>
-Mantenerlos ordenados por secciones y regresar cada cosa a su lugar.
-</div>
-
-<div class="guide">
-<strong>🧹 Piso</strong>
-Debe quedar limpio también por debajo de las cosas.
-</div>
-
-<div class="guide">
-<strong>🧽 Mesa del centro</strong>
-Debe mantenerse limpia y acomodada también por debajo.
+<div id="kitchenSaved" class="saved">
+✓ Cierre guardado correctamente.
 </div>
 
 </div>
 
 </div></div>
 </section>
-eople(area).map(function(person){
-          const already=records.some(function(r){return r.name===person;});
-          return `<button class="person ${already?"on":""}" data-person="${escapeHtml(person)}">${escapeHtml(person)}</button>`;
-        }).join("")}
-      </div>
 
-      <div class="log">
-        ${
-          records.length
-          ?
-          records.slice().sort(function(a,b){
-            return (a.timestamp||0)-(b.timestamp||0);
-          }).map(function(record){
-            return `
-              <div class="entry">
-                <span>👤 <strong>${escapeHtml(record.name)}</strong></span>
-                <span>🕐 ${escapeHtml(record.time)}</span>
-              </div>
-            `;
-          }).join("")
-          :
-          `<div class="empty">Aún no se ha registrado esta actividad.</div>`
-        }
-      </div>
+<script>
 
-      <input
-        class="note"
-        placeholder="Observaciones (opcional)"
-        value="${escapeHtml(note)}"
-      >
-    `;
+const TASKS={
 
-    task.querySelectorAll(".person").forEach(function(button){
+kitchen:{
 
-      button.addEventListener("click",function(){
+daily:[
+"Loza limpia, seca y acomodada",
+"Piso barrido y trapeado",
+"Plancha limpia",
+"Estufa limpia",
+"Baños María limpios",
+"2 Microondas limpios",
+"Loza y utensilios acomodados",
+"Área de trabajo limpia y despejada",
+"Limpieza de derrames inmediata",
+"Mesa del centro limpia y acomodada"
+],
 
-        let records=getRecords(area,type,index);
-        const person=button.dataset.person;
+deep:[
+"Hornos – Limpieza profunda",
+"Charolas – Lavado y secado",
+"Paredes – Limpieza general",
+"Baños María – Vaciar y lavar",
+"Campana – Limpieza de grasa"
+],
 
-        const existing=records.some(function(r){
-          return r.name===person;
-        });
+scheduled:[
+"Acomodar Bodega – Viernes",
+"Acomodar Bodega – Sábado"
+]
 
-        if(existing){
+},
 
-          records=records.filter(function(r){
-            return r.name!==person;
-          });
+bar:{
 
-        }else{
+daily:[
+"Preparar Cold Brew",
+"Rellenar recibidor",
+"Tirar basura",
+"Acomodar pan",
+"Rellenar vasos (según sea necesario)",
+"Limpiar cafeteras por fuera",
+"Limpieza de mesas y sillas",
+"Limpieza de baños"
+],
 
-          records.push({
-            name:person,
-            time:currentTime(),
-            timestamp:Date.now()
-          });
-
-        }
-
-        saveRecords(area,type,index,records);
-
-        if(records.length){
-          localStorage.setItem(key,"completed");
-        }else{
-          localStorage.removeItem(key);
-        }
-
-        loadArea(area);
-
-      });
-
-    });
-
-    task.querySelector(".note").addEventListener(
-      "input",
-      function(e){
-        localStorage.setItem(
-          key+"-note",
-          e.target.value
-        );
-      }
-    );
-
-    container.appendChild(task);
-
-  });
+scheduled:[
+"Acomodar Bodega – Viernes",
+"Acomodar Bodega – Sábado",
+"Limpieza profunda de 2 cafeteras – Sábado",
+"Limpieza de Molino – Sábado",
+"Realizar Descalcificado – Sábado"
+]
 
 }
 
+};
 
-/* ===== ESTADÍSTICAS ===== */
+const PEOPLE={
 
-function getSets(area){
+kitchen:[
+"Jessica",
+"Itzel · Cocina",
+"César",
+"David"
+],
 
-  if(area==="kitchen"){
+bar:[
+"Jessica",
+"Itzel · Barra",
+"César",
+"David"
+]
 
-    return[
-      {
-        type:"daily",
-        items:T.kitchen.daily
-      },
-      {
-        type:"deep",
-        items:T.kitchen.deep
-      },
-      {
-        type:"sched",
-        items:T.kitchen.sched
-      }
-    ];
+};
 
-  }
+function dateNow(){
 
-  return[
-    {
-      type:"daily",
-      items:T.bar.daily
-    },
-    {
-      type:"sched",
-      items:T.bar.sched
-    }
-  ];
+const d=new Date();
+
+return d.getFullYear()+"-"+
+String(d.getMonth()+1).padStart(2,"0")+"-"+
+String(d.getDate()).padStart(2,"0");
 
 }
 
+function dateOf(area){
+
+return localStorage.getItem(
+"mm-"+area+"-date"
+)||dateNow();
+
+}
+
+function key(area,type,index){
+
+return "mm-"+
+area+"-"+
+dateOf(area)+
+"-"+
+type+
+"-"+
+index;
+
+}
+
+function recKey(area,type,index){
+
+return key(area,type,index)+"-people";
+
+}
+
+function escapeHTML(s){
+
+return String(s)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+function show(page){
+
+document.getElementById("cover").style.display=
+page==="cover"?"flex":"none";
+
+document
+.querySelectorAll(".screen")
+.forEach(
+function(x){
+x.classList.remove("active");
+}
+);
+
+if(page!=="cover"){
+
+document
+.getElementById(page)
+.classList.add("active");
+
+}
+
+if(page==="bar"||page==="kitchen"){
+
+load(page);
+
+}
+
+window.scrollTo(0,0);
+
+}
+
+function meta(area){
+
+const id=
+area==="bar"
+?"barDate"
+:"kitchenDate";
+
+localStorage.setItem(
+"mm-"+area+"-date",
+document.getElementById(id).value
+);
+
+load(area);
+
+}
+
+function setTurn(area,value){
+
+localStorage.setItem(
+"mm-"+area+"-"+dateOf(area)+"-turn",
+value
+);
+
+load(area);
+
+}
+
+function getTurn(area){
+
+return localStorage.getItem(
+"mm-"+area+"-"+dateOf(area)+"-turn"
+)||"";
+
+}
+
+function records(area,type,index){
+
+try{
+
+const r=
+JSON.parse(
+localStorage.getItem(
+recKey(area,type,index)
+)||"[]"
+);
+
+if(!Array.isArray(r))
+return[];
+
+return r.filter(
+function(x){
+
+return x &&
+typeof x.name==="string" &&
+typeof x.time==="string" &&
+x.name.trim()!=="undefined" &&
+x.time.trim()!=="undefined" &&
+x.name.trim()!=="null" &&
+x.time.trim()!=="null";
+
+}
+);
+
+}catch(e){
+
+return[];
+
+}
+
+}
+
+function nowTime(){
+
+return new Intl.DateTimeFormat(
+"es-MX",
+{
+hour:"numeric",
+minute:"2-digit",
+hour12:true
+}
+).format(new Date());
+
+}
+
+function saveRecords(area,type,index,r){
+
+localStorage.setItem(
+recKey(area,type,index),
+JSON.stringify(r)
+);
+
+}
+
+function toggle(area,type,index,person){
+
+let r=
+records(area,type,index);
+
+let i=
+r.findIndex(
+function(x){
+return x.name===person;
+}
+);
+
+if(i>=0){
+
+r.splice(i,1);
+
+}else{
+
+r.push({
+name:person,
+time:nowTime(),
+timestamp:Date.now()
+});
+
+}
+
+saveRecords(
+area,
+type,
+index,
+r
+);
+
+if(r.length){
+
+localStorage.setItem(
+key(area,type,index),
+"1"
+);
+
+}else{
+
+localStorage.removeItem(
+key(area,type,index)
+);
+
+}
+
+load(area);
+
+}
+
+function renderTasks(area,type,items,id){
+
+const box=
+document.getElementById(id);
+
+box.innerHTML="";
+
+items.forEach(
+function(item,index){
+
+const r=
+records(area,type,index);
+
+const el=
+document.createElement("div");
+
+el.className="task";
+
+el.innerHTML=`
+
+<div class="task-row">
+
+<div class="check ${r.length?"done":""}">
+
+${r.length?"✓":""}
+
+</div>
+
+<div class="task-name">
+
+${escapeHTML(item)}
+
+</div>
+
+</div>
+
+<div class="people-label">
+
+👆 Toca el nombre cuando realice esta actividad:
+
+</div>
+
+<div class="people">
+
+${PEOPLE[area]
+.map(
+function(p){
+
+return`
+
+<button
+class="person ${r.some(function(x){return x.name===p;})?"selected":""}"
+data-name="${escapeHTML(p)}"
+>
+
+${escapeHTML(p)}
+
+</button>
+
+`;
+
+}
+)
+.join("")}
+
+</div>
+
+<div class="log">
+
+${
+r.length
+
+?
+
+r.map(
+function(x){
+
+return`
+
+<div class="entry">
+
+<span>
+👤 <strong>${escapeHTML(x.name)}</strong>
+</span>
+
+<span>
+🕐 ${escapeHTML(x.time)}
+</span>
+
+</div>
+
+`;
+
+}
+).join("")
+
+:
+
+'<div class="empty">Aún no se ha registrado esta actividad.</div>'
+
+}
+
+</div>
+
+`;
+
+el
+.querySelectorAll(".person")
+.forEach(
+function(b){
+
+b.onclick=
+function(){
+
+toggle(
+area,
+type,
+index,
+b.dataset.name
+);
+
+};
+
+}
+);
+
+box.appendChild(el);
+
+});
+
+}
 
 function stats(area){
 
-  let total=0;
-  let done=0;
-  let pending=[];
+let total=0;
+let done=0;
+let pending=[];
 
-  getSets(area).forEach(function(set){
+getSets(area)
+.forEach(
+function(s){
 
-    set.items.forEach(function(item,index){
+s.items.forEach(
+function(item,i){
 
-      total++;
+total++;
 
-      const records=
-        getRecords(
-          area,
-          set.type,
-          index
-        );
+if(
+records(area,s.type,i).length
+){
 
-      if(records.length){
+done++;
 
-        done++;
+}else{
 
-      }else{
-
-        pending.push(item);
-
-      }
-
-    });
-
-  });
-
-  return{
-    total:total,
-    done:done,
-    pending:pending,
-    percent:total
-      ?Math.round(done/total*100)
-      :0
-  };
+pending.push(item);
 
 }
 
+});
 
-function renderStats(area){
+});
 
-  const s=stats(area);
+return{
 
-  const id=
-    area==="kitchen"
-    ?"kitchenStats"
-    :"barStats";
+total:total,
 
-  document.getElementById(id).innerHTML=`
+done:done,
 
-    <div class="stats">
+pending:pending,
 
-      <div class="stat">
-        <b>${s.done}</b>
-        <span>Completadas</span>
-      </div>
+pct:
+total
+?
+Math.round(done/total*100)
+:
+0
 
-      <div class="stat">
-        <b>${s.pending.length}</b>
-        <span>Pendientes</span>
-      </div>
-
-      <div class="stat">
-        <b>${s.percent}%</b>
-        <span>Avance</span>
-      </div>
-
-    </div>
-
-    <div class="progress">
-      <i style="width:${s.percent}%"></i>
-    </div>
-
-    <div class="pct">
-      ${s.done} de ${s.total} actividades completadas
-    </div>
-
-  `;
-
-  const pendingId=
-    area==="kitchen"
-    ?"kitchenPend"
-    :"barPend";
-
-  const box=document.getElementById(pendingId);
-
-  if(!s.pending.length){
-
-    box.innerHTML=`
-      <div class="empty">
-        ✓ No hay actividades pendientes. ¡Todo está listo!
-      </div>
-    `;
-
-  }else{
-
-    box.innerHTML=
-      s.pending.map(function(item){
-
-        return`
-          <div class="pending">
-            ⚠️ ${escapeHtml(item)}
-          </div>
-        `;
-
-      }).join("");
-
-  }
+};
 
 }
 
+function getSets(area){
 
-/* ===== CIERRE ===== */
+return area==="kitchen"
+
+?
+
+[
+{
+type:"daily",
+items:TASKS.kitchen.daily
+},
+
+{
+type:"deep",
+items:TASKS.kitchen.deep
+},
+
+{
+type:"scheduled",
+items:TASKS.kitchen.scheduled
+}
+]
+
+:
+
+[
+{
+type:"daily",
+items:TASKS.bar.daily
+},
+
+{
+type:"scheduled",
+items:TASKS.bar.scheduled
+}
+];
+
+}
+
+function renderSummary(area){
+
+const s=
+stats(area);
+
+const id=
+area==="kitchen"
+?
+"kitchenSummary"
+:
+"barSummary";
+
+document.getElementById(id).innerHTML=`
+
+<div class="stats">
+
+<div class="stat">
+
+<strong>${s.done}</strong>
+
+<span>
+Completadas
+</span>
+
+</div>
+
+<div class="stat">
+
+<strong>${s.pending.length}</strong>
+
+<span>
+Pendientes
+</span>
+
+</div>
+
+<div class="stat">
+
+<strong>${s.pct}%</strong>
+
+<span>
+Avance
+</span>
+
+</div>
+
+</div>
+
+<div class="progress">
+
+<div
+class="progress-bar"
+style="width:${s.pct}%"
+></div>
+
+</div>
+
+<div class="progress-text">
+
+${s.done}
+de
+${s.total}
+actividades completadas
+
+</div>
+
+`;
+
+const p=
+document.getElementById(
+area==="kitchen"
+?
+"kitchenPending"
+:
+"barPending"
+);
+
+p.innerHTML=
+s.pending.length
+
+?
+
+s.pending
+.map(
+function(x){
+
+return`
+
+<div class="pending">
+
+⚠️
+${escapeHTML(x)}
+
+</div>
+
+`;
+
+}
+)
+.join("")
+
+:
+
+'<div class="empty">✓ No hay actividades pendientes.</div>';
+
+}
 
 function closeKey(area){
 
-  return "mm-"+
-    area+"-"+
-    getDate(area)+
-    "-close";
+return "mm-"+
+area+"-"+
+dateOf(area)+
+"-close";
 
 }
 
+function setClose(area,value){
 
-function closeTurn(area,value){
+const s=
+stats(area);
 
-  const s=stats(area);
+if(
+value==="listo"&&
+s.pending.length
+){
 
-  if(value==="listo" && s.pending.length){
+alert(
+"Todavía hay actividades pendientes."
+);
 
-    alert(
-      "Todavía hay actividades pendientes. "+
-      "Regístralas o selecciona “Quedaron pendientes”."
-    );
-
-    return;
-
-  }
-
-  localStorage.setItem(
-    closeKey(area),
-    value
-  );
-
-  loadClose(area);
+return;
 
 }
 
+localStorage.setItem(
+closeKey(area),
+value
+);
 
-function note(area){
-
-  const element=
-    document.getElementById(
-      area+"Note"
-    );
-
-  localStorage.setItem(
-    closeKey(area)+"-note",
-    element.value
-  );
+loadClose(area);
 
 }
 
+function saveNote(area){
+
+localStorage.setItem(
+closeKey(area)+"-note",
+document.getElementById(area+"Note").value
+);
+
+}
 
 function loadClose(area){
 
-  const value=
-    localStorage.getItem(
-      closeKey(area)
-    )||"";
+const value=
+localStorage.getItem(
+closeKey(area)
+)||"";
 
-  document
-    .querySelectorAll(
-      `.closebtn[data-a="${area}"]`
-    )
-    .forEach(function(button){
+document
+.querySelectorAll(
+`[data-area="${area}"][data-close]`
+)
+.forEach(
+function(b){
 
-      button.classList.toggle(
-        "selected",
-        button.dataset.v===value
-      );
+b.classList.toggle(
+"selected",
+b.dataset.close===value
+);
 
-    });
+}
+);
 
-  const noteBox=
-    document.getElementById(
-      area+"Note"
-    );
+const n=
+document.getElementById(
+area+"Note"
+);
 
-  if(noteBox){
+if(n){
 
-    noteBox.value=
-      localStorage.getItem(
-        closeKey(area)+"-note"
-      )||"";
-
-  }
+n.value=
+localStorage.getItem(
+closeKey(area)+"-note"
+)||"";
 
 }
 
+}
 
 function saveClose(area){
 
-  note(area);
+saveNote(area);
 
-  const box=
-    document.getElementById(
-      area+"Saved"
-    );
+const x=
+document.getElementById(
+area+"Saved"
+);
 
-  box.classList.add("show");
+x.classList.add("show");
 
-  setTimeout(function(){
+setTimeout(
+function(){
 
-    box.classList.remove("show");
+x.classList.remove("show");
 
-  },2500);
-
-}
-
-
-/* ===== REPORTE WHATSAPP ===== */
-
-function dateEs(value){
-
-  const p=value.split("-");
-
-  if(p.length!==3)
-    return value;
-
-  return`${p[2]}/${p[1]}/${p[0]}`;
+},
+2200
+);
 
 }
-
-
-function allData(area){
-
-  const result=[];
-
-  getSets(area).forEach(function(set){
-
-    set.items.forEach(function(item,index){
-
-      const key=
-        taskKey(
-          area,
-          set.type,
-          index
-        );
-
-      result.push({
-
-        name:item,
-
-        records:
-          getRecords(
-            area,
-            set.type,
-            index
-          ),
-
-        note:
-          localStorage.getItem(
-            key+"-note"
-          )||""
-
-      });
-
-    });
-
-  });
-
-  return result;
-
-}
-
 
 function report(area){
 
-  const data=allData(area);
+const s=
+stats(area);
 
-  const completed=
-    data.filter(function(item){
-      return item.records.length>0;
-    });
+const all=[];
+const people=[];
 
-  const pending=
-    data.filter(function(item){
-      return item.records.length===0;
-    });
+getSets(area)
+.forEach(
+function(set){
 
-  const people=[
-    ...new Set(
-      data.flatMap(function(item){
-        return item.records.map(function(r){
-          return r.name;
-        });
-      })
-    )
-  ];
+set.items.forEach(
+function(item,index){
 
-  const percent=
-    data.length
-    ?Math.round(
-      completed.length/data.length*100
-    )
-    :0;
+const r=
+records(
+area,
+set.type,
+index
+);
 
-  const name=
-    area==="kitchen"
-    ?"COCINA"
-    :"BARRA";
+all.push({
+item:item,
+r:r
+});
 
-  const icon=
-    area==="kitchen"
-    ?"👩🏻‍🍳"
-    :"☕";
+r.forEach(
+function(x){
 
-  const turnValue=
-    getTurn(area)||
-    "Sin turno seleccionado";
+if(
+!people.includes(x.name)
+){
 
-  let text=
-    `${icon} *CIERRE DE TURNO — ${name}*\n`+
-    `📅 Fecha: ${dateEs(getDate(area))}\n`+
-    `🕐 Turno: ${turnValue}\n\n`;
-
-  text+=
-    `👥 *PERSONAL QUE PARTICIPÓ*\n`;
-
-  if(people.length){
-
-    people.forEach(function(person){
-
-      text+=`• ${person}\n`;
-
-    });
-
-  }else{
-
-    text+=
-      `• No se registró personal\n`;
-
-  }
-
-  text+=
-    `\n✅ *ACTIVIDADES REALIZADAS*\n`;
-
-  if(completed.length){
-
-    completed.forEach(function(item){
-
-      text+=
-        `\n• *${item.name}*\n`;
-
-      item.records
-        .slice()
-        .sort(function(a,b){
-
-          return(
-            (a.timestamp||0)-
-            (b.timestamp||0)
-          );
-
-        })
-        .forEach(function(record){
-
-          text+=
-            `  → ${record.name} — ${record.time}\n`;
-
-        });
-
-      if(item.note.trim()){
-
-        text+=
-          `  📝 ${item.note.trim()}\n`;
-
-      }
-
-    });
-
-  }else{
-
-    text+=
-      `• Ninguna actividad registrada como completada.\n`;
-
-  }
-
-  text+=
-    `\n⚠️ *PENDIENTES*\n`;
-
-  if(pending.length){
-
-    pending.forEach(function(item){
-
-      text+=
-        `• ${item.name}\n`;
-
-    });
-
-  }else{
-
-    text+=
-      `• No quedaron pendientes. 🎉\n`;
-
-  }
-
-  text+=
-    `\n📊 *AVANCE: ${percent}%*\n`+
-    `✅ ${completed.length} de ${data.length} actividades completadas\n`;
-
-  const close=
-    localStorage.getItem(
-      closeKey(area)
-    )||"";
-
-  text+=
-    `\n🏁 *CIERRE*\n`;
-
-  if(close==="listo"){
-
-    text+=
-      `🟢 Todo listo\n`;
-
-  }else if(close==="pendientes"){
-
-    text+=
-      `🟡 Quedaron pendientes\n`;
-
-  }else{
-
-    text+=
-      `⚪ Cierre no seleccionado\n`;
-
-  }
-
-  const observation=
-    localStorage.getItem(
-      closeKey(area)+"-note"
-    )||"";
-
-  if(observation.trim()){
-
-    text+=
-      `\n📝 *OBSERVACIONES*\n`+
-      `${observation.trim()}\n`;
-
-  }
-
-  text+=
-    `\n🥐 Masa Madre · Boulangerie`;
-
-  return text;
+people.push(x.name);
 
 }
 
+});
+
+});
+
+});
+
+let text=
+
+`👩🏻‍🍳 *CIERRE DE TURNO — ${
+area==="kitchen"?"COCINA":"BARRA"
+}*\n`+
+
+`📅 Fecha: ${
+dateOf(area)
+.split("-")
+.reverse()
+.join("/")
+}\n`+
+
+`🕐 Turno: ${
+getTurn(area)||"Sin turno"
+}\n\n`;
+
+text+=
+`👥 *PERSONAL QUE PARTICIPÓ*\n`+
+
+(
+people.length
+?
+people.map(
+function(x){
+return"• "+x;
+}
+).join("\n")
+:
+"• Ninguno"
+)+
+"\n\n";
+
+text+=
+"✅ *ACTIVIDADES REALIZADAS*\n";
+
+const done=
+all.filter(
+function(x){
+return x.r.length;
+}
+);
+
+if(done.length){
+
+done.forEach(
+function(x){
+
+text+=
+`\n• *${x.item}*\n`;
+
+x.r.forEach(
+function(r){
+
+text+=
+`  → ${r.name} — ${r.time}\n`;
+
+});
+
+});
+
+}else{
+
+text+=
+"• Ninguna actividad registrada como completada.\n";
+
+}
+
+text+=
+"\n⚠️ *PENDIENTES*\n";
+
+const pend=
+all.filter(
+function(x){
+return !x.r.length;
+}
+);
+
+text+=
+
+pend.length
+
+?
+
+pend.map(
+function(x){
+return"• "+x.item;
+}
+).join("\n")
+
+:
+
+"• No quedaron pendientes. 🎉";
+
+text+=
+`\n\n📊 *AVANCE: ${s.pct}%*\n`+
+
+`✅ ${s.done} de ${s.total} actividades completadas\n\n`+
+
+"🏁 *CIERRE*\n";
+
+const c=
+localStorage.getItem(
+closeKey(area)
+);
+
+text+=
+
+c==="listo"
+?
+"🟢 Todo listo"
+
+:
+
+c==="pendientes"
+?
+"🟡 Quedaron pendientes"
+
+:
+
+"⚪ Cierre no seleccionado";
+
+const n=
+localStorage.getItem(
+closeKey(area)+"-note"
+)||"";
+
+if(n.trim()){
+
+text+=
+`\n\n📝 *OBSERVACIONES*\n${n.trim()}`;
+
+}
+
+text+=
+"\n\n🥐 Masa Madre · Boulangerie";
+
+return text;
+
+}
 
 function whatsapp(area){
 
-  const text=
-    report(area);
-
-  const url=
-    "https://wa.me/?text="+
-    encodeURIComponent(text);
-
-  window.open(
-    url,
-    "_blank"
-  );
-
-}
-
-
-/* ===== CARGAR ÁREA ===== */
-
-function loadArea(area){
-
-  const dateId=
-    area==="kitchen"
-    ?"kitchenDate"
-    :"barDate";
-
-  document.getElementById(
-    dateId
-  ).value=
-    getDate(area);
-
-
-  const selected=
-    getTurn(area);
-
-  document
-    .querySelectorAll(
-      `.turn[data-a="${area}"]`
-    )
-    .forEach(function(button){
-
-      button.classList.toggle(
-        "selected",
-        button.dataset.t===selected
-      );
-
-    });
-
-
-  if(area==="kitchen"){
-
-    renderTasks(
-      area,
-      "daily",
-      T.kitchen.daily,
-      "kitchenDaily"
-    );
-
-    renderTasks(
-      area,
-      "deep",
-      T.kitchen.deep,
-      "kitchenDeep"
-    );
-
-    renderTasks(
-      area,
-      "sched",
-      T.kitchen.sched,
-      "kitchenSched"
-    );
-
-  }else{
-
-    renderTasks(
-      area,
-      "daily",
-      T.bar.daily,
-      "barDaily"
-    );
-
-    renderTasks(
-      area,
-      "sched",
-      T.bar.sched,
-      "barSched"
-    );
-
-  }
-
-
-  renderStats(area);
-
-  renderPeopleManager(area);
-
-  renderIdentity(area);
-
-  loadClose(area);
-
-}
-
-
-/* ===== SEGURIDAD ===== */
-
-function escapeHtml(text){
-
-  return String(text)
-
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-
-/* ===== LIMPIAR UNDEFINED ===== */
-
-function cleanOldRecords(){
-
-  ["bar","kitchen"]
-    .forEach(function(area){
-
-      getSets(area)
-        .forEach(function(set){
-
-          set.items
-            .forEach(function(item,index){
-
-              const key=
-                peopleKey(
-                  area,
-                  set.type,
-                  index
-                );
-
-              const records=
-                getRecords(
-                  area,
-                  set.type,
-                  index
-                );
-
-              localStorage.setItem(
-                key,
-                JSON.stringify(records)
-              );
-
-              if(records.length){
-
-                localStorage.setItem(
-                  taskKey(
-                    area,
-                    set.type,
-                    index
-                  ),
-                  "completed"
-                );
-
-              }else{
-
-                localStorage.removeItem(
-                  taskKey(
-                    area,
-                    set.type,
-                    index
-                  )
-                );
-
-              }
-
-            });
-
-        });
-
-    });
-
-}
-<script>
-
-function init(){
-
-  cleanOldRecords();
-
-  const barDate=
-    document.getElementById("barDate");
-
-  const kitchenDate=
-    document.getElementById("kitchenDate");
-
-  if(barDate){
-    barDate.value=getDate("bar");
-  }
-
-  if(kitchenDate){
-    kitchenDate.value=getDate("kitchen");
-  }
-
-  goTo("cover");
-
-}
-
-
-/* ENTER PARA AGREGAR PERSONAL */
-
-document.addEventListener(
-  "keydown",
-  function(event){
-
-    if(event.key!=="Enter")
-      return;
-
-    const target=
-      event.target;
-
-    if(
-      target &&
-      target.classList.contains(
-        "staff-input"
-      )
-    ){
-
-      const area=
-        target.id==="barInput"
-        ?"bar"
-        :"kitchen";
-
-      add(area);
-
-    }
-
-  }
+window.open(
+"https://wa.me/?text="+
+encodeURIComponent(
+report(area)
+),
+"_blank"
 );
 
+}
 
-/* INICIAR */
+function load(area){
+
+const dateId=
+area==="bar"
+?
+"barDate"
+:
+"kitchenDate";
+
+document.getElementById(
+dateId
+).value=
+dateOf(area);
+
+document
+.querySelectorAll(
+`[data-area="${area}"].turn`
+)
+.forEach(
+function(b){
+
+b.classList.toggle(
+"selected",
+b.dataset.turn===
+getTurn(area)
+);
+
+}
+);
+
+if(area==="kitchen"){
+
+renderTasks(
+area,
+"daily",
+TASKS.kitchen.daily,
+"kitchenDaily"
+);
+
+renderTasks(
+area,
+"deep",
+TASKS.kitchen.deep,
+"kitchenDeep"
+);
+
+renderTasks(
+area,
+"scheduled",
+TASKS.kitchen.scheduled,
+"kitchenScheduled"
+);
+
+}else{
+
+renderTasks(
+area,
+"daily",
+TASKS.bar.daily,
+"barTasks"
+);
+
+renderTasks(
+area,
+"scheduled",
+TASKS.bar.scheduled,
+"barScheduled"
+);
+
+}
+
+renderSummary(area);
+
+loadClose(area);
+
+}
 
 document.addEventListener(
-  "DOMContentLoaded",
-  init
+"DOMContentLoaded",
+function(){
+
+document.getElementById(
+"barDate"
+).value=
+dateOf("bar");
+
+document.getElementById(
+"kitchenDate"
+).value=
+dateOf("kitchen");
+
+show("cover");
+
+}
 );
 
 </script>
