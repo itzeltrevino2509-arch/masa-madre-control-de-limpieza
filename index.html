@@ -21,7 +21,7 @@ body {
 
 .app {
   min-height: 100vh;
-  padding: 30px 18px 40px;
+  padding: 28px 18px 45px;
 }
 
 .container {
@@ -30,15 +30,18 @@ body {
   margin: auto;
 }
 
-/* ENCABEZADO */
+/* =========================
+   ENCABEZADO
+========================= */
+
 .header {
   text-align: center;
-  margin-bottom: 35px;
+  margin-bottom: 32px;
 }
 
 .brand {
   margin: 0;
-  font-size: 42px;
+  font-size: 40px;
   letter-spacing: 6px;
   font-weight: bold;
   color: #173B63;
@@ -55,10 +58,13 @@ body {
   width: 75px;
   height: 2px;
   background: #9b3f32;
-  margin: 18px auto;
+  margin: 17px auto;
 }
 
-/* PANTALLAS */
+/* =========================
+   PANTALLAS
+========================= */
+
 .screen {
   display: none;
 }
@@ -67,9 +73,13 @@ body {
   display: block;
 }
 
+/* =========================
+   INICIO
+========================= */
+
 .welcome {
   text-align: center;
-  margin-bottom: 28px;
+  margin-bottom: 27px;
 }
 
 .welcome h2 {
@@ -83,7 +93,10 @@ body {
   font-size: 15px;
 }
 
-/* BOTONES PRINCIPALES */
+/* =========================
+   BOTONES DE ÁREA
+========================= */
+
 .area-button {
   width: 100%;
   padding: 25px 20px;
@@ -121,7 +134,10 @@ body {
   font-size: 14px;
 }
 
-/* REGRESAR */
+/* =========================
+   REGRESAR
+========================= */
+
 .back {
   border: none;
   background: transparent;
@@ -133,7 +149,10 @@ body {
   cursor: pointer;
 }
 
-/* TÍTULOS */
+/* =========================
+   TÍTULOS
+========================= */
+
 .section-title {
   text-align: center;
   font-size: 29px;
@@ -146,7 +165,10 @@ body {
   margin: 0 0 25px;
 }
 
-/* PERSONAL */
+/* =========================
+   EQUIPO
+========================= */
+
 .team-card {
   background: #fffaf5;
   border: 1px solid #d5c4b3;
@@ -180,7 +202,10 @@ body {
   font-size: 22px;
 }
 
-/* BOTÓN LIMPIEZA */
+/* =========================
+   BOTÓN DE LIMPIEZA
+========================= */
+
 .clean-button {
   width: 100%;
   margin-top: 20px;
@@ -193,6 +218,10 @@ body {
   font-size: 17px;
   cursor: pointer;
 }
+
+/* =========================
+   PIE
+========================= */
 
 .footer {
   text-align: center;
@@ -209,6 +238,10 @@ body {
 <div class="app">
 <div class="container">
 
+<!-- =========================
+     ENCABEZADO
+========================= -->
+
 <header class="header">
   <h1 class="brand">MASA MADRE</h1>
   <div class="subtitle">BOULANGERIE</div>
@@ -216,7 +249,10 @@ body {
 </header>
 
 
-<!-- INICIO -->
+<!-- =========================
+     INICIO
+========================= -->
+
 <section id="home" class="screen active">
 
   <div class="welcome">
@@ -227,19 +263,26 @@ body {
   <button class="area-button" onclick="showScreen('cocina')">
     <span class="area-icon">👨🏻‍🍳</span>
     <span class="area-title">COCINA</span>
-    <span class="area-description">Equipo de cocina</span>
+    <span class="area-description">
+      Equipo de cocina
+    </span>
   </button>
 
   <button class="area-button" onclick="showScreen('barra')">
     <span class="area-icon">☕</span>
     <span class="area-title">BARISTA</span>
-    <span class="area-description">Equipo de barra y cafetería</span>
+    <span class="area-description">
+      Equipo de barra y cafetería
+    </span>
   </button>
 
 </section>
 
 
-<!-- COCINA -->
+<!-- =========================
+     COCINA
+========================= -->
+
 <section id="cocina" class="screen">
 
   <button class="back" onclick="showScreen('home')">
@@ -247,11 +290,21 @@ body {
   </button>
 
   <h2 class="section-title">👨🏻‍🍳 Cocina</h2>
-  <p class="section-subtitle">Equipo de cocina</p>
+
+  <p class="section-subtitle">
+    Equipo de cocina
+  </p>
 
   <div class="team-card">
 
-    <div class="team-title">PERSONAL</div>
+    <div class="team-title">
+      PERSONAL
+    </div>
+
+    <div class="person">
+      <span class="person-icon">👩🏻‍🍳</span>
+      Jessica
+    </div>
 
     <div class="person">
       <span class="person-icon">👨🏻‍🍳</span>
@@ -260,7 +313,7 @@ body {
 
     <div class="person">
       <span class="person-icon">👩🏻‍🍳</span>
-      Itzel
+      Itzel · Cocina
     </div>
 
     <div class="person">
@@ -273,11 +326,6 @@ body {
       Ángel
     </div>
 
-    <div class="person">
-      <span class="person-icon">👩🏻‍🍳</span>
-      Jessica
-    </div>
-
   </div>
 
   <button class="clean-button">
@@ -287,7 +335,10 @@ body {
 </section>
 
 
-<!-- BARRA -->
+<!-- =========================
+     BARRA
+========================= -->
+
 <section id="barra" class="screen">
 
   <button class="back" onclick="showScreen('home')">
@@ -295,11 +346,21 @@ body {
   </button>
 
   <h2 class="section-title">☕ Barista</h2>
-  <p class="section-subtitle">Equipo de barra y cafetería</p>
+
+  <p class="section-subtitle">
+    Equipo de barra y cafetería
+  </p>
 
   <div class="team-card">
 
-    <div class="team-title">PERSONAL</div>
+    <div class="team-title">
+      PERSONAL
+    </div>
+
+    <div class="person">
+      <span class="person-icon">☕</span>
+      Jessica
+    </div>
 
     <div class="person">
       <span class="person-icon">☕</span>
@@ -308,7 +369,7 @@ body {
 
     <div class="person">
       <span class="person-icon">☕</span>
-      Itzel
+      Itzel · Barra
     </div>
 
     <div class="person">
@@ -330,6 +391,10 @@ body {
 </section>
 
 
+<!-- =========================
+     PIE
+========================= -->
+
 <div class="footer">
   MASA MADRE · BOULANGERIE
 </div>
@@ -339,6 +404,7 @@ body {
 
 
 <script>
+
 function showScreen(screenId) {
 
   document.querySelectorAll(".screen").forEach(function(screen) {
@@ -351,7 +417,9 @@ function showScreen(screenId) {
     top: 0,
     behavior: "smooth"
   });
+
 }
+
 </script>
 
 </body>
